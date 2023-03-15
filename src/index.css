@@ -1,0 +1,30 @@
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+.header, footer {
+  padding: 15px 0;
+  text-align: center;
+  background-color: antiquewhite;
+}
+.main {
+  height: calc(100vh - 120px);
+}
+.header a { 
+  padding: 15px;
+}
+a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.active-link {
+  color: red;
+  cursor: default;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
