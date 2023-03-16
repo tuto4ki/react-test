@@ -5,29 +5,28 @@ interface IState {
   value: string;
 }
 
-class SearchBar extends React.Component<{}, IState> {
-
-  constructor(props: {}) {
+class SearchBar extends React.Component<Record<string, never>, IState> {
+  constructor(props: Record<string, never>) {
     super(props);
     let valueInput = localStorage.getItem('search');
     if (valueInput === null) {
       valueInput = '';
     }
     this.state = {
-      value: valueInput
+      value: valueInput,
     };
   }
-  
+
   setStateSearch(): void {
     localStorage.setItem('search', this.state.value);
   }
 
-  componentDidUpdate(prevProps: IState) {
-    if (prevProps.value !== this.state.value) {
-      this.setStateSearch();
-    }
+  componentDidUpdate() {
+    // if (prevProps.value !== this.state.value) {
+    this.setStateSearch();
+    // }
   }
-  
+
   componentWillUnmount() {
     this.setStateSearch();
   }
@@ -46,7 +45,7 @@ class SearchBar extends React.Component<{}, IState> {
           value={this.state.value}
         />
       </div>
-    )
+    );
   }
 }
 

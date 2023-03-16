@@ -1,6 +1,11 @@
 body {
   margin: 0px;
   padding: 0px;
+  background-color: #faebd74f;
+}
+p {
+  margin: 0;
+  padding: 0;
 }
 
 .header, footer {
@@ -9,7 +14,7 @@ body {
   background-color: antiquewhite;
 }
 .main {
-  height: calc(100vh - 120px);
+  min-height: calc(100vh - 120px);
 }
 .header a { 
   padding: 15px;

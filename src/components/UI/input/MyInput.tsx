@@ -9,15 +9,12 @@ interface IProps {
 }
 
 class MyInput extends React.Component<IProps> {
-
   constructor(props: IProps) {
     super(props);
   }
 
   render(): React.ReactNode {
-    return (
-      <input className="input" {...this.props} />
-    );
+    return <input className="input" {...this.props} />;
   }
 }
 
