@@ -3,21 +3,18 @@ body {
   padding: 0px;
   background-color: #faebd74f;
 }
-p {
+* {
   margin: 0;
   padding: 0;
 }
-
-.header, footer {
+.footer {
   padding: 15px 0;
   text-align: center;
   background-color: antiquewhite;
 }
 .main {
-  min-height: calc(100vh - 120px);
-}
-.header a { 
-  padding: 15px;
+  padding: 20px 0;
+  min-height: calc(100vh - 140px);
 }
 a {
   color: #000000;

@@ -9,3 +9,11 @@ export interface IItemCard {
   thumbnail: string,
   images: string[]
 }
+
+export interface IStatePage {
+  title: string;
+}
+export interface IRouter {
+  title: string;
+  callback: (title: IStatePage) => void;
+}

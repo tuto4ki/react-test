@@ -1,5 +1,6 @@
 import React from 'react';
-import { MyInput } from './UI/input/MyInput';
+import { MyInput } from '../UI/input/MyInput';
+import './SearchBar.css';
 
 interface IState {
   value: string;
@@ -22,9 +23,7 @@ class SearchBar extends React.Component<Record<string, never>, IState> {
   }
 
   componentDidUpdate() {
-    // if (prevProps.value !== this.state.value) {
     this.setStateSearch();
-    // }
   }
 
   componentWillUnmount() {
