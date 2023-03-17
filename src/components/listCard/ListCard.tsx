@@ -10,11 +10,11 @@ class ListCard extends React.Component {
 
   render(): React.ReactNode {
     return (
-      <div className="cards">
+      <article className="cards">
         {this.state.data.products.map((item) => (
           <ItemCard {...item} key={item.id} />
         ))}
-      </div>
+      </article>
     );
   }
 }
