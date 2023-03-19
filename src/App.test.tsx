@@ -11,8 +11,5 @@ describe('renders learn react link', () => {
       </BrowserRouter>
     );
     expect(screen.getByText(/About/i)).toBeInTheDocument();
-    //expect(screen.getByRole('textbox')).toBeInTheDocument();
-    //expect(screen.getByPlaceholderText('Search bar')).toBeInTheDocument();
-    //fireEvent.change(screen.getByRole('textbox', { target: { value: 'React' } }));
   });
 });

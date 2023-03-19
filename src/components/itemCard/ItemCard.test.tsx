@@ -20,6 +20,8 @@ const data = {
 describe('renders learn react link', () => {
   it('render list', () => {
     render(<ItemCard {...data} />);
-    expect(screen.getByText('Living room')).toBeInTheDocument();
+    expect(screen.getByText(data.title)).toBeInTheDocument();
+    expect(screen.getByAltText(data.title)).toBeInTheDocument();
+    expect(screen.getAllByTestId('item-card').length).toEqual(1);
   });
 });

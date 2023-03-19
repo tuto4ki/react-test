@@ -10,7 +10,7 @@ class ItemCard extends React.Component<IItemCard> {
 
   render(): React.ReactNode {
     return (
-      <div className="item-card">
+      <div className="item-card" data-testid="item-card">
         <img src={this.props.thumbnail} alt={this.props.title} className="item-picture" />
         <div className="item-container item-price">
           <p className="price">${this.props.price}</p>
