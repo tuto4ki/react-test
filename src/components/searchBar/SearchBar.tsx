@@ -2,11 +2,11 @@ import React from 'react';
 import { MyInput } from '../UI/input/MyInput';
 import './SearchBar.css';
 
-interface IState {
+interface ISearchBarState {
   value: string;
 }
 
-class SearchBar extends React.Component<Record<string, never>, IState> {
+class SearchBar extends React.Component<Record<string, never>, ISearchBarState> {
   constructor(props: Record<string, never>) {
     super(props);
     let valueInput = localStorage.getItem('search');

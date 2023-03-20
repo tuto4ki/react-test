@@ -7,11 +7,6 @@ body {
   margin: 0;
   padding: 0;
 }
-.footer {
-  padding: 15px 0;
-  text-align: center;
-  background-color: antiquewhite;
-}
 .main {
   padding: 20px 0;
   min-height: calc(100vh - 140px);

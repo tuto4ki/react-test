@@ -15,7 +15,7 @@ class App extends React.Component<Record<string, never>, IStatePage> {
     this.setTitle = this.setTitle.bind(this);
   }
 
-  setTitle(title: IStatePage) {
+  private setTitle(title: IStatePage) {
     this.setState(title);
   }
 

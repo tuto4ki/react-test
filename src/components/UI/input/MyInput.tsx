@@ -1,15 +1,15 @@
 import React from 'react';
 import './MyInput.css';
 
-interface IProps {
+interface IMyInputProps {
   type: string;
   placeholder: string;
   value: string;
   onChange: (e: React.FormEvent<HTMLInputElement>) => void;
 }
 
-class MyInput extends React.Component<IProps> {
-  constructor(props: IProps) {
+class MyInput extends React.Component<IMyInputProps> {
+  constructor(props: IMyInputProps) {
     super(props);
   }
 

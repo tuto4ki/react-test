@@ -17,8 +17,7 @@ class ItemCard extends React.Component<IItemCard> {
           Price
         </div>
         <div className="item-container">
-          <span className="item-title">{this.props.title}</span>
-          <br />
+          <h4 className="item-title">{this.props.title}</h4>
           <div className="item-description">{this.props.description}</div>
         </div>
         <div className="item-container statistics">

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import { Footer } from './footer/Footer';
 
 class Layout extends React.Component {
   render(): React.ReactNode {
@@ -9,7 +10,7 @@ class Layout extends React.Component {
           <Outlet />
         </main>
 
-        <footer className="container footer">2023</footer>
+        <Footer />
       </>
     );
   }
