@@ -6,6 +6,7 @@ import { Layout } from './components/Layout';
 import { Header } from './components/header/Header';
 import React from 'react';
 import { IStatePage } from 'type';
+import { CreateCardPage } from './pages/createCard/CreateCardPage';
 class App extends React.Component<Record<string, never>, IStatePage> {
   constructor(props: Record<string, never>) {
     super(props);
@@ -27,6 +28,10 @@ class App extends React.Component<Record<string, never>, IStatePage> {
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage title="Home" callback={this.setTitle} />} />
             <Route path="about" element={<AboutPage title="About" callback={this.setTitle} />} />
+            <Route
+              path="createCard"
+              element={<CreateCardPage title="Create card" callback={this.setTitle} />}
+            />
             <Route path="*" element={<NotFoundPage title="Not Page" callback={this.setTitle} />} />
           </Route>
         </Routes>

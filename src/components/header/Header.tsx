@@ -18,6 +18,9 @@ class Header extends React.Component<IStatePage> {
         <NavLink to="/about" className={setActive}>
           About
         </NavLink>
+        <NavLink to="/createCard" className={setActive}>
+          Create card
+        </NavLink>
         <h1>{this.props.title}</h1>
       </header>
     );
