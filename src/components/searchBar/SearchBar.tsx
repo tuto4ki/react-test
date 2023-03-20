@@ -22,10 +22,6 @@ class SearchBar extends React.Component<Record<string, never>, ISearchBarState> 
     localStorage.setItem('search', this.state.value);
   }
 
-  componentDidUpdate() {
-    this.setStateSearch();
-  }
-
   componentWillUnmount() {
     this.setStateSearch();
   }
