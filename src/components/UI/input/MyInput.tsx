@@ -2,9 +2,12 @@ import React from 'react';
 import './MyInput.css';
 
 interface IMyInputProps {
+  name: string;
+  id?: string;
   type: string;
-  placeholder: string;
+  placeholder?: string;
   value: string;
+  className: string;
   onChange: (e: React.FormEvent<HTMLInputElement>) => void;
 }
 
@@ -14,7 +17,7 @@ class MyInput extends React.Component<IMyInputProps> {
   }
 
   render(): React.ReactNode {
-    return <input className="input" {...this.props} />;
+    return <input {...this.props} />;
   }
 }
 

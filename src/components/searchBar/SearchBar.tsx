@@ -22,10 +22,6 @@ class SearchBar extends React.Component<Record<string, never>, ISearchBarState> 
     localStorage.setItem('search', this.state.value);
   }
 
-  componentDidUpdate() {
-    this.setStateSearch();
-  }
-
   componentWillUnmount() {
     this.setStateSearch();
   }
@@ -39,9 +35,11 @@ class SearchBar extends React.Component<Record<string, never>, ISearchBarState> 
       <div className="container_search">
         <MyInput
           type="text"
+          name="search"
           onChange={this.onChange}
           placeholder="Search bar"
           value={this.state.value}
+          className="input"
         />
       </div>
     );

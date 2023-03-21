@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
-    "lint": "eslint --debug src/",
+    "lint": "eslint --fix src/",
     "prettier": "prettier --write src/**/*.tsx",
     "test": "vitest --coverage"
   },
