@@ -1,6 +1,7 @@
-import { CreateCardForm } from '../../components/createCardForm/CreateCardForm';
+import { ListCard } from '../../components/listCard/ListCard';
 import React from 'react';
 import { IRouter } from 'type';
+import { CreateCardController } from '../../components/createCardController/CreateCardController';
 
 class CreateCardPage extends React.Component<IRouter> {
   constructor(props: IRouter) {
@@ -12,8 +13,8 @@ class CreateCardPage extends React.Component<IRouter> {
     return (
       <>
         <h2>Create card page</h2>
-        <div>dkn</div>
-        <CreateCardForm />
+        <CreateCardController />
+        <ListCard />
       </>
     );
   }

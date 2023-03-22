@@ -5,13 +5,13 @@ import { ItemCard } from '../itemCard/ItemCard';
 
 class ListCard extends React.Component {
   state = {
-    data: dataCard,
+    data: dataCard.products,
   };
 
   render(): React.ReactNode {
     return (
       <section className="cards">
-        {this.state.data.products.map((item) => (
+        {this.state.data.map((item) => (
           <ItemCard {...item} key={item.id} />
         ))}
       </section>

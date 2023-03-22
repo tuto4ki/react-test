@@ -6,9 +6,10 @@ interface IMyInputProps {
   id?: string;
   type: string;
   placeholder?: string;
-  value: string;
+  value?: string;
   className: string;
-  onChange: (e: React.FormEvent<HTMLInputElement>) => void;
+  defaultValue?: string;
+  onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
 }
 
 class MyInput extends React.Component<IMyInputProps> {

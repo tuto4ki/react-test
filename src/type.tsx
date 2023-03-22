@@ -1,3 +1,5 @@
+import { MyInput } from "components/UI/input/MyInput";
+
 export interface IItemCard {
   id: number;
   title: string;
@@ -16,4 +18,17 @@ export interface IStatePage {
 export interface IRouter {
   title: string;
   callback: (title: IStatePage) => void;
+}
+
+export type TCreateItem = {
+  inputName: string;
+  inputDate: string;
+  selectTypeRoom: string;
+  inputAgree: string;
+  inputPromo: string;
+  inputFile: string;
+}
+
+export interface IFormCallback {
+  callback: (state: TCreateItem) => void;
 }

@@ -1,16 +1,35 @@
-import './CreateCardForm.css';
+import './CreateCardComponent.css';
 import React from 'react';
-import { MyInput } from '../UI/input/MyInput';
+import { IFormCallback } from '../../type';
 
-class CreateCardForm extends React.Component {
-  constructor(props: Record<string, never>) {
+class CreateCardComponent extends React.Component<IFormCallback> {
+  state = {
+    ref: {
+      inputName: React.createRef<HTMLInputElement>(),
+      inputDate: React.createRef<HTMLInputElement>(),
+      selectTypeRoom: React.createRef<HTMLSelectElement>(),
+      inputAgree: React.createRef<HTMLInputElement>(),
+      inputPromo: React.createRef<HTMLInputElement>(),
+      inputFile: React.createRef<HTMLInputElement>(),
+    },
+  };
+  constructor(props: IFormCallback) {
     super(props);
-    this.onSubmit = this.onSubmit.bind(this);
   }
 
-  private onSubmit(event: React.SyntheticEvent) {
+  private onSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
-  }
+    const refs = this.state.ref;
+    const valueForm = {
+      inputName: refs.inputName.current ? refs.inputName.current.value : '',
+      inputDate: refs.inputDate.current ? refs.inputDate.current.value : '',
+      selectTypeRoom: refs.selectTypeRoom.current ? refs.selectTypeRoom.current.value : '',
+      inputAgree: refs.inputAgree.current ? refs.inputAgree.current.value : '',
+      inputPromo: refs.inputPromo.current ? refs.inputPromo.current.value : '',
+      inputFile: refs.inputFile.current ? refs.inputFile.current.value : '',
+    };
+    this.props.callback(valueForm);
+  };
 
   onChange = (e: React.FormEvent<HTMLInputElement>): void => {
     this.setState({ value: e.currentTarget.value });
@@ -25,13 +44,12 @@ class CreateCardForm extends React.Component {
           </label>
         </div>
         <div>
-          <MyInput
+          <input
             name="name"
             type="text"
-            onChange={this.onChange}
-            placeholder="Search bar"
-            value="jh"
+            placeholder="Project name"
             className="create-input input-text"
+            ref={this.state.ref.inputName}
           />
         </div>
         <div className="align-right">
@@ -40,13 +58,12 @@ class CreateCardForm extends React.Component {
           </label>
         </div>
         <div>
-          <MyInput
+          <input
             type="date"
             name="date"
-            onChange={this.onChange}
-            placeholder="Search bar"
-            value="0100-01-01"
+            defaultValue="2023-01-01"
             className="create-input input-date"
+            ref={this.state.ref.inputDate}
           />
         </div>
         <div className="align-right">
@@ -55,7 +72,7 @@ class CreateCardForm extends React.Component {
           </label>
         </div>
         <div>
-          <select name="selectRoom" id="" className="select">
+          <select name="selectRoom" id="" className="select" ref={this.state.ref.selectTypeRoom}>
             <option value="kitchen">kitchen</option>
             <option value="bedroom">bedroom</option>
             <option value="living room">living room</option>
@@ -69,12 +86,11 @@ class CreateCardForm extends React.Component {
           </label>
         </div>
         <div>
-          <MyInput
+          <input
             type="checkbox"
             name="agree"
-            onChange={this.onChange}
-            value="1"
             className="input-checkbox"
+            ref={this.state.ref.inputAgree}
           />
         </div>
         <div className="align-right">
@@ -86,31 +102,26 @@ class CreateCardForm extends React.Component {
           <label htmlFor="radioYes" className="label-list">
             Yes
           </label>
-          <MyInput
+          <input
             type="radio"
             name="promo"
-            onChange={this.onChange}
-            value="1"
             id="radioYes"
             className="input-radio"
+            defaultChecked
+            ref={this.state.ref.inputPromo}
           />
           <label htmlFor="radioNo" className="label-list">
             No
           </label>
-          <MyInput
-            type="radio"
-            name="promo"
-            onChange={this.onChange}
-            value="1"
-            id="radioNo"
-            className="input-radio"
-          />
+          <input type="radio" name="promo" id="radioNo" className="input-radio" />
         </div>
         <div className="align-right">
-          <label className="label">Upload file:</label>
+          <label htmlFor="file" className="label">
+            Upload file:
+          </label>
         </div>
         <div>
-          <input type="file" className="input-file" />
+          <input type="file" name="file" className="input-file" />
         </div>
         <div className="button-center">
           <button type="submit" className="button">
@@ -122,4 +133,4 @@ class CreateCardForm extends React.Component {
   }
 }
 
-export { CreateCardForm };
+export { CreateCardComponent };
