@@ -1,4 +1,4 @@
-import { MyInput } from "components/UI/input/MyInput";
+import { RefObject } from 'react';
 
 export interface IItemCard {
   id: number;
@@ -24,7 +24,6 @@ export interface IRouter {
 
 export type TCreateItem = {
   inputName: string;
-  inputDate: string;
   date: string;
   description: string;
   price: number;
@@ -32,10 +31,16 @@ export type TCreateItem = {
   inputAgree: string;
   inputPromo: number;
   inputFile: string;
-}
+};
 
 export interface IFormCallback {
   callback: (state: TCreateItem) => void;
+}
+
+export interface IFormCallbackNon {
+  callback: () => void;
+  refForm: IRefForm;
+  error: ICreateFormState;
 }
 
 export interface ICreateFormState {
@@ -56,4 +61,16 @@ export interface ICreateFormState {
   isValidFile: boolean;
   messageErrorFile: string;
   showModal: boolean;
+}
+
+interface IRefForm {
+  form: RefObject<HTMLFormElement>;
+  inputName: RefObject<HTMLInputElement>;
+  inputPrice: RefObject<HTMLInputElement>;
+  description: RefObject<HTMLTextAreaElement>;
+  inputDate: RefObject<HTMLInputElement>;
+  selectTypeRoom: RefObject<HTMLSelectElement>;
+  inputAgree: RefObject<HTMLInputElement>;
+  inputLikes: Array<RefObject<HTMLInputElement>>;
+  inputFile: RefObject<HTMLInputElement>;
 }

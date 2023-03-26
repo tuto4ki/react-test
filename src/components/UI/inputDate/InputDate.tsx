@@ -13,7 +13,13 @@ class InputDate extends React.Component<IInputDateProps> {
 
   render(): React.ReactNode {
     return (
-      <input type="date" className="input-date" ref={this.props.myRef} name={this.props.name} />
+      <input
+        type="date"
+        className="input-date"
+        ref={this.props.myRef}
+        name={this.props.name}
+        role="role-date"
+      />
     );
   }
 }

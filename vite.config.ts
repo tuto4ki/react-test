@@ -1,7 +1,7 @@
 import react from '@vitejs/plugin-react'
 import eslintPlugin from 'vite-plugin-eslint';
 import { defineConfig } from 'vite';
-import type { UserConfig as VitestUserConfigInterface } from 'vitest/config';
+import { configDefaults, UserConfig as VitestUserConfigInterface } from 'vitest/config';
 
 const vitestConfig: VitestUserConfigInterface = {
   test: {
@@ -9,6 +9,7 @@ const vitestConfig: VitestUserConfigInterface = {
     environment: 'jsdom',
     setupFiles: './tests/setup.ts',
     coverage: {
+      exclude: [...configDefaults.coverage.exclude, 'src/main.tsx', 'src/type.tsx'],
       provider: 'c8',
       all: true,
     },

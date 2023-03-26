@@ -19,6 +19,7 @@ class InputFile extends React.Component<IInputFileProps> {
         accept="image/*"
         className="input-file"
         ref={this.props.myRef}
+        role="role-file"
       />
     );
   }

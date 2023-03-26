@@ -1,7 +1,7 @@
 import { ListCard } from '../../components/listCard/ListCard';
 import React from 'react';
 import { IRouter, TCreateItem, IItemCard } from 'type';
-import { CreateCardForm } from '../../components/createCardForm/CreateCardForm';
+import { CreateCardValidation } from '../../components/CreateCardValidation/CreateCardValidation';
 
 class CreateCardPage extends React.Component<IRouter> {
   state = {
@@ -36,7 +36,7 @@ class CreateCardPage extends React.Component<IRouter> {
     return (
       <>
         <h2>Create card page</h2>
-        <CreateCardForm callback={this.addCard} />
+        <CreateCardValidation callback={this.addCard} />
         <ListCard data={this.state.data} />
       </>
     );
