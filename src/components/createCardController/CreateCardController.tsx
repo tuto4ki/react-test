@@ -1,10 +1,16 @@
 import { CreateCardComponent } from '../createCardComponent/CreateCardComponent';
 import React from 'react';
-import { TCreateItem } from '../../type';
+import { IFormCallback, TCreateItem } from '../../type';
 
-class CreateCardController extends React.Component {
+class CreateCardController extends React.Component<IFormCallback> {
+  constructor(props: IFormCallback) {
+    super(props);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
   onSubmit(state: TCreateItem): void {
-    console.log(state);
+    // validatin form
+    this.props.callback(state);
   }
 
   render(): React.ReactNode {

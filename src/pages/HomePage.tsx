@@ -2,6 +2,7 @@ import { ListCard } from '../components/listCard/ListCard';
 import React from 'react';
 import { SearchBar } from '../components/searchBar/SearchBar';
 import { IRouter } from 'type';
+import dataCard from '../assets/json/card.json';
 
 class HomePage extends React.Component<IRouter> {
   constructor(props: IRouter) {
@@ -14,7 +15,7 @@ class HomePage extends React.Component<IRouter> {
       <>
         <h2>Home page</h2>
         <SearchBar />
-        <ListCard />
+        <ListCard data={dataCard.products} />
       </>
     );
   }

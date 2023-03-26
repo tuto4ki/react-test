@@ -14,14 +14,18 @@ class ItemCard extends React.Component<IItemCard> {
         <img src={this.props.thumbnail} alt={this.props.title} className="item-picture" />
         <div className="item-container item-price">
           <p className="price">${this.props.price}</p>
-          Price
+          {this.props.date}
         </div>
         <div className="item-container">
           <h4 className="item-title">{this.props.title}</h4>
-          <div className="item-description">{this.props.description}</div>
+          <div className="item-description">
+            {this.props.typeRoom}
+            <br />
+            {this.props.description}
+          </div>
         </div>
         <div className="item-container statistics">
-          <span className="icon-heart">{this.props.likes}</span>
+          <span className="icon-heart">{this.props.likes >= 0 ? this.props.likes : ''}</span>
           <span className="icon-view">{this.props.view}</span>
         </div>
       </div>

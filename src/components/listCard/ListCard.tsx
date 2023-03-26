@@ -1,17 +1,17 @@
 import React from 'react';
 import './ListCard.css';
-import dataCard from '../../assets/json/card.json';
 import { ItemCard } from '../itemCard/ItemCard';
+import { IItemCard } from '../../type';
 
-class ListCard extends React.Component {
-  state = {
-    data: dataCard.products,
-  };
+class ListCard extends React.Component<{ data: Array<IItemCard> }> {
+  constructor(props: { data: Array<IItemCard> }) {
+    super(props);
+  }
 
   render(): React.ReactNode {
     return (
       <section className="cards">
-        {this.state.data.map((item) => (
+        {this.props.data.map((item) => (
           <ItemCard {...item} key={item.id} />
         ))}
       </section>
