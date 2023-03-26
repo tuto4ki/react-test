@@ -25,3 +25,10 @@ export function isValidateDate(date: string | undefined): string {
   }
   return '';
 }
+
+export function isValidationTypeRoom(room: string | undefined): string {
+  if (room && room !== '0') {
+    return room;
+  }
+  return '';
+}

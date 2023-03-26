@@ -3,6 +3,7 @@ import {
   isValidationDescription,
   isValidationName,
   isValidationPrice,
+  isValidationTypeRoom,
 } from './validationFunction';
 
 describe('Form validation', () => {
@@ -15,5 +16,7 @@ describe('Form validation', () => {
     expect(isValidationDescription('')).toBe('');
     expect(isValidateDate('2011-01-01')).toBe('2011-01-01');
     expect(isValidateDate(undefined)).toBe('');
+    expect(isValidationTypeRoom('0')).toBe('');
+    expect(isValidationTypeRoom('living room')).toBe('living room');
   });
 });

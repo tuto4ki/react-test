@@ -6,6 +6,7 @@ import {
   isValidationDescription,
   isValidationName,
   isValidationPrice,
+  isValidationTypeRoom,
 } from './validationFunction';
 
 class CreateCardValidation extends React.Component<IFormCallback, ICreateFormState> {
@@ -64,9 +65,11 @@ class CreateCardValidation extends React.Component<IFormCallback, ICreateFormSta
     return isValidDescription;
   }
 
-  private validFile(): boolean {
-    const isValidFile = Boolean(this.ref.inputFile.current?.files?.length);
-    this.setState({ isValidFile });
+  private validFile(): string {
+    const isValidFile = this.ref.inputFile.current?.files?.length
+      ? URL.createObjectURL(this.ref.inputFile.current.files[0])
+      : '';
+    this.setState({ isValidFile: Boolean(isValidFile) });
     return isValidFile;
   }
 
@@ -76,25 +79,31 @@ class CreateCardValidation extends React.Component<IFormCallback, ICreateFormSta
     return isValidDate;
   }
 
-  private validTypeRoom(): boolean {
-    const isValidTypeRoom = this.ref.selectTypeRoom.current?.value !== '0';
-    this.setState({ isValidTypeRoom });
+  private validTypeRoom(): string {
+    const isValidTypeRoom = isValidationTypeRoom(this.ref.selectTypeRoom.current?.value);
+    this.setState({ isValidTypeRoom: Boolean(isValidTypeRoom) });
     return isValidTypeRoom;
   }
 
-  private validAgree(): boolean {
+  private validAgree(): string {
     const isValidAgree = Boolean(this.ref.inputAgree.current?.checked);
     this.setState({ isValidAgree });
-    return isValidAgree;
+    return this.ref.inputAgree.current ? this.ref.inputAgree.current.value : '';
   }
 
-  private validLike(): boolean {
+  private validLike(): number {
     let isValidLikes = false;
     this.ref.inputLikes.map((value) => {
       isValidLikes = isValidLikes || Boolean(value.current?.checked);
     });
     this.setState({ isValidLikes });
-    return isValidLikes;
+    let isShowLike = 1;
+    if (this.ref.inputLikes[0].current && this.ref.inputLikes[1].current) {
+      isShowLike = this.ref.inputLikes[0].current.checked
+        ? +this.ref.inputLikes[0].current.value
+        : +this.ref.inputLikes[1].current.value;
+    }
+    return isShowLike;
   }
 
   private successData(): void {
@@ -106,46 +115,36 @@ class CreateCardValidation extends React.Component<IFormCallback, ICreateFormSta
     const price = this.validPrice();
     const description = this.validDescription();
     const date = this.validDate();
-    const isTypeRoom = this.validTypeRoom();
-    const isAgree = this.validAgree();
-    const isLike = this.validLike();
-    const isFile = this.validFile();
+    const selectTypeRoom = this.validTypeRoom();
+    const inputAgree = this.validAgree();
+    const inputPromo = this.validLike();
+    const inputFile = this.validFile();
     if (
       !inputName ||
       !price ||
       !description ||
       !date ||
-      !isTypeRoom ||
-      !isAgree ||
-      !isLike ||
-      !isFile
+      !selectTypeRoom ||
+      !inputAgree ||
+      inputPromo === 1 ||
+      !inputFile
     ) {
       this.setState({ showModal: false });
       return;
     }
     this.setState({ showModal: true });
     setTimeout(() => this.setState({ showModal: false }), 2000);
-    const refs = this.ref;
-    let isShowLike = 0;
-    if (refs.inputLikes[0].current && refs.inputLikes[1].current) {
-      isShowLike = refs.inputLikes[0].current.checked
-        ? +refs.inputLikes[0].current.value
-        : +refs.inputLikes[1].current.value;
-    }
-    const valueForm = {
+    this.successData();
+    this.props.callback({
       inputName,
       date,
       description,
       price,
-      selectTypeRoom: refs.selectTypeRoom.current ? refs.selectTypeRoom.current.value : '',
-      inputAgree: refs.inputAgree.current ? refs.inputAgree.current.value : '',
-      inputPromo: isShowLike,
-      inputFile: refs.inputFile.current?.files
-        ? URL.createObjectURL(refs.inputFile.current.files[0])
-        : '',
-    };
-    this.successData();
-    this.props.callback(valueForm);
+      selectTypeRoom,
+      inputAgree,
+      inputPromo,
+      inputFile,
+    });
   }
 
   render(): React.ReactNode {

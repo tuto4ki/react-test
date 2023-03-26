@@ -45,7 +45,9 @@ class CreateCardForm extends React.Component<IFormCallbackNon> {
               placeholder="Project name"
               myRef={this.props.refForm.inputName}
             />
-            {!this.props.error.isValidName && <p>{this.props.error.messageErrorName}</p>}
+            {!this.props.error.isValidName && (
+              <p className="message-error">{this.props.error.messageErrorName}</p>
+            )}
           </div>
           <MyLabel htmlFor="price">Price:</MyLabel>
           <div>
@@ -54,7 +56,9 @@ class CreateCardForm extends React.Component<IFormCallbackNon> {
               placeholder="Project price"
               myRef={this.props.refForm.inputPrice}
             />
-            {!this.props.error.isValidPrice && <p>{this.props.error.messageErrorPrice}</p>}
+            {!this.props.error.isValidPrice && (
+              <p className="message-error">{this.props.error.messageErrorPrice}</p>
+            )}
           </div>
           <MyLabel htmlFor="description">Description:</MyLabel>
           <div>
@@ -64,13 +68,15 @@ class CreateCardForm extends React.Component<IFormCallbackNon> {
               myRef={this.props.refForm.description}
             />
             {!this.props.error.isValidDescription && (
-              <p>{this.props.error.messageErrorDescription}</p>
+              <p className="message-error">{this.props.error.messageErrorDescription}</p>
             )}
           </div>
           <MyLabel htmlFor="date">Date:</MyLabel>
           <div>
             <InputDate name="date" myRef={this.props.refForm.inputDate} />
-            {!this.props.error.isValidDate && <p>{this.props.error.messageErrorDate}</p>}
+            {!this.props.error.isValidDate && (
+              <p className="message-error">{this.props.error.messageErrorDate}</p>
+            )}
           </div>
           <MyLabel htmlFor="selectRoom">Type room:</MyLabel>
           <div>
@@ -79,12 +85,16 @@ class CreateCardForm extends React.Component<IFormCallbackNon> {
               options={typeRoom.typeRoom}
               myRef={this.props.refForm.selectTypeRoom}
             />
-            {!this.props.error.isValidTypeRoom && <p>{this.props.error.messageErrorTypeRoom}</p>}
+            {!this.props.error.isValidTypeRoom && (
+              <p className="message-error">{this.props.error.messageErrorTypeRoom}</p>
+            )}
           </div>
           <MyLabel htmlFor="agree">I consent to the use of my resources</MyLabel>
           <div>
             <InputCheckbox name="agree" myRef={this.props.refForm.inputAgree} />
-            {!this.props.error.isValidAgree && <p>{this.props.error.messageErrorAgree}</p>}
+            {!this.props.error.isValidAgree && (
+              <p className="message-error">{this.props.error.messageErrorAgree}</p>
+            )}
           </div>
           <MyLabel htmlFor="promo">Show number of likes</MyLabel>
           <div>
@@ -102,12 +112,16 @@ class CreateCardForm extends React.Component<IFormCallbackNon> {
               defaultValue="-1"
               myRef={this.props.refForm.inputLikes[1]}
             />
-            {!this.props.error.isValidLikes && <p>{this.props.error.messageErrorLikes}</p>}
+            {!this.props.error.isValidLikes && (
+              <p className="message-error">{this.props.error.messageErrorLikes}</p>
+            )}
           </div>
           <MyLabel htmlFor="file">Upload file:</MyLabel>
           <div>
             <InputFile name="file" myRef={this.props.refForm.inputFile} />
-            {!this.props.error.isValidFile && <p>{this.props.error.messageErrorFile}</p>}
+            {!this.props.error.isValidFile && (
+              <p className="message-error">{this.props.error.messageErrorFile}</p>
+            )}
           </div>
           <div className="button-center">
             <MyButton>Submit</MyButton>
