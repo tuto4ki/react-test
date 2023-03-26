@@ -1,4 +1,4 @@
-import './CreateCardComponent.css';
+import './CreateCardForm.css';
 import React from 'react';
 import { IFormCallback, ICreateFormState } from '../../type';
 import {
@@ -15,7 +15,7 @@ import {
 import typeRoom from '../../assets/json/typeRoom.json';
 import { ModalWindow } from '../modalWindow/ModalWindow';
 
-class CreateCardComponent extends React.Component<IFormCallback, ICreateFormState> {
+class CreateCardForm extends React.Component<IFormCallback, ICreateFormState> {
   private ref = {
     form: React.createRef<HTMLFormElement>(),
     inputName: React.createRef<HTMLInputElement>(),
@@ -237,4 +237,4 @@ class CreateCardComponent extends React.Component<IFormCallback, ICreateFormStat
   }
 }
 
-export { CreateCardComponent };
+export { CreateCardForm };
