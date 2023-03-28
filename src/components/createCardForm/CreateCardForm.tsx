@@ -27,7 +27,6 @@ class CreateCardForm extends React.Component<IFormCallbackNon> {
   }
 
   render(): React.ReactNode {
-    // modal window
     const modal = this.props.error.showModal ? <ModalWindow /> : null;
     return (
       <>
