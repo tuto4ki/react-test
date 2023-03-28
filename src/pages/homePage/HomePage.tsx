@@ -1,8 +1,8 @@
-import { ListCard } from '../components/listCard/ListCard';
+import { ListCard } from '../../components/listCard/ListCard';
 import React from 'react';
-import { SearchBar } from '../components/searchBar/SearchBar';
+import { SearchBar } from '../../components/searchBar/SearchBar';
 import { IRouter } from 'type';
-import dataCard from '../assets/json/card.json';
+import dataCard from '../../assets/json/card.json';
 
 class HomePage extends React.Component<IRouter> {
   constructor(props: IRouter) {

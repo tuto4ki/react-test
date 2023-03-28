@@ -1,6 +1,6 @@
 import { ListCard } from '../../components/listCard/ListCard';
 import React from 'react';
-import { IRouter, TCreateItem, IItemCard } from 'type';
+import { IRouter, TCreateItem, IItemCard } from '../../type';
 import { CreateCardValidation } from '../../components/CreateCardValidation/CreateCardValidation';
 
 class CreateCardPage extends React.Component<IRouter> {
@@ -19,7 +19,7 @@ class CreateCardPage extends React.Component<IRouter> {
     cards.push({
       id: this.state.data.length,
       title: state.inputName,
-      date: state.inputDate,
+      date: state.date,
       typeRoom: state.selectTypeRoom,
       description: state.description,
       price: state.price,

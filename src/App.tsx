@@ -1,12 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
-import { HomePage } from './pages/HomePage';
-import { AboutPage } from './pages/AboutPage';
-import { NotFoundPage } from './pages/NotFoundPage';
+import { HomePage } from './pages/HomePage/HomePage';
+import { AboutPage } from './pages/aboutPage/AboutPage';
+import { NotFoundPage } from './pages/notFoundPage/NotFoundPage';
 import { Layout } from './components/Layout';
 import { Header } from './components/header/Header';
 import React from 'react';
 import { IStatePage } from 'type';
-import { CreateCardPage } from './pages/createCard/CreateCardPage';
+import { CreateCardPage } from './pages/createCardPage/CreateCardPage';
 class App extends React.Component<Record<string, never>, IStatePage> {
   constructor(props: Record<string, never>) {
     super(props);
