@@ -1,43 +1,45 @@
 import { Routes, Route } from 'react-router-dom';
-import { HomePage } from './pages/HomePage/HomePage';
-import { AboutPage } from './pages/aboutPage/AboutPage';
-import { NotFoundPage } from './pages/notFoundPage/NotFoundPage';
+import * as Pages from './pages/index';
 import { Layout } from './components/Layout';
 import { Header } from './components/header/Header';
-import React from 'react';
-import { IStatePage } from 'type';
-import { CreateCardPage } from './pages/createCardPage/CreateCardPage';
-class App extends React.Component<Record<string, never>, IStatePage> {
-  constructor(props: Record<string, never>) {
+import React, { useState } from 'react';
+// import { IStatePage } from 'type';
+
+function App() {
+  /*
     super(props);
     this.state = {
       title: 'test',
     };
     this.setTitle = this.setTitle.bind(this);
   }
-
-  private setTitle(title: IStatePage) {
-    this.setState(title);
-  }
-
-  render(): React.ReactNode {
-    return (
-      <>
-        <Header title={this.state.title} />
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<HomePage title="Home" callback={this.setTitle} />} />
-            <Route path="about" element={<AboutPage title="About" callback={this.setTitle} />} />
-            <Route
-              path="createCard"
-              element={<CreateCardPage title="Create card" callback={this.setTitle} />}
-            />
-            <Route path="*" element={<NotFoundPage title="Not Page" callback={this.setTitle} />} />
-          </Route>
-        </Routes>
-      </>
-    );
-  }
+  const setTitle = (title: IStatePage) => {
+    setState(title);
+  };
+  */
+  const changeTitle = (title2: string) => {
+    setTitle(title2);
+  };
+  const [title, setTitle] = useState('Test');
+  return (
+    <>
+      <Header title={title} />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Pages.HomePage title="Home" callback={changeTitle} />} />
+          <Route path="about" element={<Pages.AboutPage title="About" callback={changeTitle} />} />
+          <Route
+            path="createCard"
+            element={<Pages.CreateCardPage title="Create card" callback={changeTitle} />}
+          />
+          <Route
+            path="*"
+            element={<Pages.NotFoundPage title="Not Page" callback={changeTitle} />}
+          />
+        </Route>
+      </Routes>
+    </>
+  );
 }
 
 export default App;

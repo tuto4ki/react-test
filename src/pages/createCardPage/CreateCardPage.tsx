@@ -10,7 +10,7 @@ class CreateCardPage extends React.Component<IRouter> {
 
   constructor(props: IRouter) {
     super(props);
-    this.props.callback(this.props);
+    this.props.callback(this.props.title);
     this.addCard = this.addCard.bind(this);
   }
 

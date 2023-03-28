@@ -19,7 +19,7 @@ export interface IStatePage {
 }
 export interface IRouter {
   title: string;
-  callback: (title: IStatePage) => void;
+  callback: (title: string) => void;
 }
 
 export type TCreateItem = {

@@ -1,15 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { IRouter } from 'type';
 
-class AboutPage extends React.Component<IRouter> {
-  constructor(props: IRouter) {
-    super(props);
-    this.props.callback(this.props);
-  }
-
-  render(): React.ReactNode {
-    return <h2>About page</h2>;
-  }
+function AboutPage(props: IRouter): JSX.Element {
+  useEffect(() => {
+    props.callback(props.title);
+  }, []);
+  return <h2>About page</h2>;
 }
 
 export { AboutPage };
