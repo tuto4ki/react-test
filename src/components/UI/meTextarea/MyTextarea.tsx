@@ -7,21 +7,9 @@ interface IMyTextareaProps {
   placeholder: string;
 }
 
-class MyTextarea extends React.Component<IMyTextareaProps> {
-  constructor(props: IMyTextareaProps) {
-    super(props);
-  }
-
-  render(): React.ReactNode {
-    return (
-      <textarea
-        className="input-textarea"
-        ref={this.props.myRef}
-        name={this.props.name}
-        placeholder={this.props.placeholder}
-      />
-    );
-  }
+function MyTextarea(props: IMyTextareaProps): JSX.Element {
+  const { name, myRef, placeholder } = props;
+  return <textarea className="input-textarea" ref={myRef} name={name} placeholder={placeholder} />;
 }
 
 export { MyTextarea };

@@ -12,14 +12,8 @@ interface IMyInputProps {
   onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
 }
 
-class MyInput extends React.Component<IMyInputProps> {
-  constructor(props: IMyInputProps) {
-    super(props);
-  }
-
-  render(): React.ReactNode {
-    return <input {...this.props} />;
-  }
+function MyInput(props: IMyInputProps): JSX.Element {
+  return <input {...props} />;
 }
 
 export { MyInput };

@@ -8,23 +8,18 @@ interface IInputRadioProps {
   defaultValue: string;
 }
 
-class InputRadio extends React.Component<IInputRadioProps> {
-  constructor(props: IInputRadioProps) {
-    super(props);
-  }
-
-  render(): React.ReactNode {
-    return (
-      <input
-        type="radio"
-        name={this.props.name}
-        id={this.props.id}
-        className="input-radio"
-        defaultValue={this.props.defaultValue}
-        ref={this.props.myRef}
-      />
-    );
-  }
+function InputRadio(props: IInputRadioProps): JSX.Element {
+  const { name, id, myRef, defaultValue } = props;
+  return (
+    <input
+      type="radio"
+      name={name}
+      id={id}
+      className="input-radio"
+      defaultValue={defaultValue}
+      ref={myRef}
+    />
+  );
 }
 
 export { InputRadio };

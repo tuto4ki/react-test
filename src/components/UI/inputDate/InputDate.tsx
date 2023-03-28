@@ -6,22 +6,9 @@ interface IInputDateProps {
   myRef: React.RefObject<HTMLInputElement>;
 }
 
-class InputDate extends React.Component<IInputDateProps> {
-  constructor(props: IInputDateProps) {
-    super(props);
-  }
-
-  render(): React.ReactNode {
-    return (
-      <input
-        type="date"
-        className="input-date"
-        ref={this.props.myRef}
-        name={this.props.name}
-        role="role-date"
-      />
-    );
-  }
+function InputDate(props: IInputDateProps) {
+  const { name, myRef } = props;
+  return <input type="date" className="input-date" ref={myRef} name={name} role="role-date" />;
 }
 
 export { InputDate };

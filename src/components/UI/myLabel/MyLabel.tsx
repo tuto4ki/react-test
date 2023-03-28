@@ -6,18 +6,12 @@ interface IMyLabelProps {
   children?: React.ReactNode;
 }
 
-class MyLabel extends React.Component<IMyLabelProps> {
-  constructor(props: IMyLabelProps) {
-    super(props);
-  }
-
-  render(): React.ReactNode {
-    return (
-      <label {...this.props} className="label">
-        {this.props.children}
-      </label>
-    );
-  }
+function MyLabel(props: IMyLabelProps): JSX.Element {
+  return (
+    <label {...props} className="label">
+      {props.children}
+    </label>
+  );
 }
 
 export { MyLabel };

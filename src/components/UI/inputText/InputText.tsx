@@ -7,22 +7,11 @@ interface IInputTextProps {
   placeholder: string;
 }
 
-class InputText extends React.Component<IInputTextProps> {
-  constructor(props: IInputTextProps) {
-    super(props);
-  }
-
-  render(): React.ReactNode {
-    return (
-      <input
-        type="text"
-        className="input-text"
-        ref={this.props.myRef}
-        name={this.props.name}
-        placeholder={this.props.placeholder}
-      />
-    );
-  }
+function InputText(props: IInputTextProps): JSX.Element {
+  const { name, myRef, placeholder } = props;
+  return (
+    <input type="text" className="input-text" ref={myRef} name={name} placeholder={placeholder} />
+  );
 }
 
 export { InputText };

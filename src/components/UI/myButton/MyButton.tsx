@@ -5,18 +5,12 @@ interface IMyButtonProps {
   children?: React.ReactNode;
 }
 
-class MyButton extends React.Component<IMyButtonProps> {
-  constructor(props: IMyButtonProps) {
-    super(props);
-  }
-
-  render(): React.ReactNode {
-    return (
-      <button type="submit" className="button">
-        {this.props.children}
-      </button>
-    );
-  }
+function MyButton(props: IMyButtonProps): JSX.Element {
+  return (
+    <button type="submit" className="button">
+      {props.children}
+    </button>
+  );
 }
 
 export { MyButton };
