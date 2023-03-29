@@ -1,49 +1,40 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+
 import { MyInput } from '../UI/input/MyInput';
 import './SearchBar.css';
 
-interface ISearchBarState {
-  value: string;
-}
+function SearchBar(): JSX.Element {
+  const [valueInput, setValueInput] = useState(
+    localStorage.getItem('search') ? String(localStorage.getItem('search')) : ''
+  );
+  const ref = useRef<string>('');
 
-class SearchBar extends React.Component<Record<string, never>, ISearchBarState> {
-  constructor(props: Record<string, never>) {
-    super(props);
-    let valueInput = localStorage.getItem('search');
-    if (valueInput === null) {
-      valueInput = '';
-    }
-    this.state = {
-      value: valueInput,
+  useEffect(() => {
+    ref.current = valueInput;
+  }, [valueInput]);
+
+  useEffect(() => {
+    return () => {
+      localStorage.setItem('search', ref.current);
     };
-  }
+  }, []);
 
-  setStateSearch(): void {
-    localStorage.setItem('search', this.state.value);
-  }
-
-  componentWillUnmount() {
-    this.setStateSearch();
-  }
-
-  onChange = (e: React.FormEvent<HTMLInputElement>): void => {
-    this.setState({ value: e.currentTarget.value });
+  const onChange = (e: React.FormEvent<HTMLInputElement>): void => {
+    setValueInput(e.currentTarget.value);
   };
 
-  render(): React.ReactNode {
-    return (
-      <div className="container_search">
-        <MyInput
-          type="text"
-          name="search"
-          onChange={this.onChange}
-          placeholder="Search bar"
-          value={this.state.value}
-          className="input"
-        />
-      </div>
-    );
-  }
+  return (
+    <div className="container_search">
+      <MyInput
+        type="text"
+        name="search"
+        onChange={onChange}
+        placeholder="Search bar"
+        value={valueInput}
+        className="input"
+      />
+    </div>
+  );
 }
 
 export { SearchBar };

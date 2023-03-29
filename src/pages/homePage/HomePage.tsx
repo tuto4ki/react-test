@@ -1,5 +1,6 @@
+import { useEffect } from 'react';
+
 import { ListCard } from '../../components/listCard/ListCard';
-import React, { useEffect } from 'react';
 import { SearchBar } from '../../components/searchBar/SearchBar';
 import { IRouter } from 'type';
 import dataCard from '../../assets/json/card.json';

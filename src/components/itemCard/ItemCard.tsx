@@ -1,4 +1,3 @@
-import React from 'react';
 import { IItemCard } from 'type';
 import './ItemCard.css';
 import '../../assets/images/iconHeart.svg';
