@@ -2,11 +2,11 @@ import { CreateCardForm } from '../createCardForm/CreateCardForm';
 import React from 'react';
 import { IFormCallback, ICreateFormState } from '../../type';
 import {
-  isValidateDate,
-  isValidationDescription,
-  isValidationName,
-  isValidationPrice,
-  isValidationTypeRoom,
+  validateDate,
+  validationDescription,
+  validationName,
+  validationPrice,
+  validationTypeRoom,
 } from './validationFunction';
 
 class CreateCardValidation extends React.Component<IFormCallback, ICreateFormState> {
@@ -48,19 +48,19 @@ class CreateCardValidation extends React.Component<IFormCallback, ICreateFormSta
   }
 
   private validNameProject(): string {
-    const isValidName = isValidationName(this.ref.inputName.current?.value);
+    const isValidName = validationName(this.ref.inputName.current?.value);
     this.setState({ isValidName: Boolean(isValidName) });
     return isValidName;
   }
 
   private validPrice(): number {
-    const isValidPrice = isValidationPrice(this.ref.inputPrice.current?.value);
+    const isValidPrice = validationPrice(this.ref.inputPrice.current?.value);
     this.setState({ isValidPrice: Boolean(isValidPrice) });
     return isValidPrice;
   }
 
   private validDescription(): string {
-    const isValidDescription = isValidationDescription(this.ref.description.current?.value);
+    const isValidDescription = validationDescription(this.ref.description.current?.value);
     this.setState({ isValidDescription: Boolean(isValidDescription) });
     return isValidDescription;
   }
@@ -74,13 +74,13 @@ class CreateCardValidation extends React.Component<IFormCallback, ICreateFormSta
   }
 
   private validDate(): string {
-    const isValidDate = isValidateDate(this.ref.inputDate.current?.value);
+    const isValidDate = validateDate(this.ref.inputDate.current?.value);
     this.setState({ isValidDate: Boolean(isValidDate) });
     return isValidDate;
   }
 
   private validTypeRoom(): string {
-    const isValidTypeRoom = isValidationTypeRoom(this.ref.selectTypeRoom.current?.value);
+    const isValidTypeRoom = validationTypeRoom(this.ref.selectTypeRoom.current?.value);
     this.setState({ isValidTypeRoom: Boolean(isValidTypeRoom) });
     return isValidTypeRoom;
   }

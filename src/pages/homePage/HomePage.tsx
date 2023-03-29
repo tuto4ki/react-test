@@ -7,7 +7,7 @@ import dataCard from '../../assets/json/card.json';
 function HomePage(props: IRouter): JSX.Element {
   useEffect(() => {
     props.callback(props.title);
-  }, []);
+  });
   return (
     <>
       <h2>Home page</h2>

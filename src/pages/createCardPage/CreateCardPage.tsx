@@ -1,46 +1,43 @@
+import { useCallback, useEffect, useState } from 'react';
+
 import { ListCard } from '../../components/listCard/ListCard';
-import React from 'react';
 import { IRouter, TCreateItem, IItemCard } from '../../type';
 import { CreateCardValidation } from '../../components/CreateCardValidation/CreateCardValidation';
 
-class CreateCardPage extends React.Component<IRouter> {
-  state = {
-    data: new Array<IItemCard>(),
-  };
+function CreateCardPage(props: IRouter): JSX.Element {
+  useEffect(() => {
+    props.callback(props.title);
+  });
 
-  constructor(props: IRouter) {
-    super(props);
-    this.props.callback(this.props.title);
-    this.addCard = this.addCard.bind(this);
-  }
+  const [listCard, setListCard] = useState(new Array<IItemCard>());
 
-  addCard(state: TCreateItem): void {
-    const cards = this.state.data;
-    cards.push({
-      id: this.state.data.length,
-      title: state.inputName,
-      date: state.date,
-      typeRoom: state.selectTypeRoom,
-      description: state.description,
-      price: state.price,
-      likes: state.inputPromo,
-      view: 0,
-      rating: 0,
-      thumbnail: state.inputFile,
-      images: [],
-    });
-    this.setState({ data: cards });
-  }
-
-  render(): React.ReactNode {
-    return (
-      <>
-        <h2>Create card page</h2>
-        <CreateCardValidation callback={this.addCard} />
-        <ListCard data={this.state.data} />
-      </>
-    );
-  }
+  const addCard = useCallback(
+    (cardItem: TCreateItem) => {
+      const id = listCard.length;
+      const card = {
+        id,
+        title: cardItem.inputName,
+        date: cardItem.date,
+        typeRoom: cardItem.selectTypeRoom,
+        description: cardItem.description,
+        price: cardItem.price,
+        likes: cardItem.inputPromo,
+        view: 0,
+        rating: 0,
+        thumbnail: cardItem.inputFile,
+        images: [],
+      };
+      setListCard([...listCard, card]);
+    },
+    [listCard]
+  );
+  return (
+    <>
+      <h2>Create card page</h2>
+      <CreateCardValidation callback={addCard} />
+      <ListCard data={listCard} />
+    </>
+  );
 }
 
 export { CreateCardPage };
