@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import * as Pages from './pages/index';
+import { HomePage, AboutPage, CreateCardPage, NotFoundPage } from './pages/index';
 import { Layout } from './components/Layout';
 import { Header } from './components/header/Header';
 
@@ -15,16 +15,13 @@ function App() {
       <Header title={title} />
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Pages.HomePage title="Home" callback={changeTitle} />} />
-          <Route path="about" element={<Pages.AboutPage title="About" callback={changeTitle} />} />
+          <Route index element={<HomePage title="Home" callback={changeTitle} />} />
+          <Route path="about" element={<AboutPage title="About" callback={changeTitle} />} />
           <Route
             path="createCard"
-            element={<Pages.CreateCardPage title="Create card" callback={changeTitle} />}
+            element={<CreateCardPage title="Create card" callback={changeTitle} />}
           />
-          <Route
-            path="*"
-            element={<Pages.NotFoundPage title="Not Page" callback={changeTitle} />}
-          />
+          <Route path="*" element={<NotFoundPage title="Not Page" callback={changeTitle} />} />
         </Route>
       </Routes>
     </>

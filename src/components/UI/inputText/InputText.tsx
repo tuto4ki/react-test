@@ -1,16 +1,17 @@
-import React from 'react';
+import { useController, UseControllerProps } from 'react-hook-form';
+
+import { TFormValues } from 'type';
 import './InputText.css';
 
-interface IInputTextProps {
-  name: string;
-  myRef: React.RefObject<HTMLInputElement>;
-  placeholder: string;
-}
+function InputText(props: UseControllerProps<TFormValues>) {
+  const { field, fieldState } = useController(props);
+  // const { field: input } = useController({ name: 'name' })
 
-function InputText(props: IInputTextProps): JSX.Element {
-  const { name, myRef, placeholder } = props;
   return (
-    <input type="text" className="input-text" ref={myRef} name={name} placeholder={placeholder} />
+    <div>
+      <input {...field} type="text" className="input-text" placeholder={props.name} />
+      <p className="message-error">{fieldState.error ? fieldState.error.message : ''}</p>
+    </div>
   );
 }
 

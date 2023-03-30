@@ -1,6 +1,4 @@
-import { AboutPage } from './aboutPage/AboutPage';
-import { CreateCardPage } from './createCardPage/CreateCardPage';
-import { HomePage } from './homePage/HomePage';
-import { NotFoundPage } from './notFoundPage/NotFoundPage';
-
-export { AboutPage, CreateCardPage, HomePage, NotFoundPage };
+export * from './aboutPage/AboutPage';
+export * from './createCardPage/CreateCardPage';
+export * from './homePage/HomePage';
+export * from './notFoundPage/NotFoundPage';

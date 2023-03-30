@@ -1,134 +1,294 @@
-import './CreateCardForm.css';
-import React from 'react';
-import { IFormCallbackNon } from '../../type';
-import {
-  MyLabel,
-  InputText,
-  MyTextarea,
-  InputDate,
-  InputFile,
-  InputRadio,
-  InputCheckbox,
-  MySelect,
-  MyButton,
-} from '../UI/index';
-import typeRoom from '../../assets/json/typeRoom.json';
+/*
+import { useForm } from 'react-hook-form';
+
+import { InputText, MyLabel, MyButton, InputNumber, MyTextarea, InputDate } from '../UI';
 import { ModalWindow } from '../modalWindow/ModalWindow';
+import { IFormCallbackNon, TFormValues } from '../../type';
+import './CreateCardForm.css';
 
-class CreateCardForm extends React.Component<IFormCallbackNon> {
-  constructor(props: IFormCallbackNon) {
-    super(props);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
-  private onSubmit(event: React.SyntheticEvent): void {
-    event.preventDefault();
-    this.props.callback();
-  }
-
-  render(): React.ReactNode {
-    const modal = this.props.error.showModal ? <ModalWindow /> : null;
-    return (
-      <>
-        {modal}
-        <form
-          name="form"
-          className="container_search"
-          onSubmit={this.onSubmit}
-          ref={this.props.refForm.form}
-        >
-          <MyLabel htmlFor="name">Name Project:</MyLabel>
-          <div>
-            <InputText
-              name="name"
-              placeholder="Project name"
-              myRef={this.props.refForm.inputName}
-            />
-            {!this.props.error.isValidName && (
-              <p className="message-error">{this.props.error.messageErrorName}</p>
-            )}
-          </div>
-          <MyLabel htmlFor="price">Price:</MyLabel>
-          <div>
-            <InputText
-              name="price"
-              placeholder="Project price"
-              myRef={this.props.refForm.inputPrice}
-            />
-            {!this.props.error.isValidPrice && (
-              <p className="message-error">{this.props.error.messageErrorPrice}</p>
-            )}
-          </div>
-          <MyLabel htmlFor="description">Description:</MyLabel>
-          <div>
-            <MyTextarea
-              name="description"
-              placeholder="Description"
-              myRef={this.props.refForm.description}
-            />
-            {!this.props.error.isValidDescription && (
-              <p className="message-error">{this.props.error.messageErrorDescription}</p>
-            )}
-          </div>
-          <MyLabel htmlFor="date">Date:</MyLabel>
-          <div>
-            <InputDate name="date" myRef={this.props.refForm.inputDate} />
-            {!this.props.error.isValidDate && (
-              <p className="message-error">{this.props.error.messageErrorDate}</p>
-            )}
-          </div>
-          <MyLabel htmlFor="selectRoom">Type room:</MyLabel>
-          <div>
-            <MySelect
-              name="selectRoom"
-              options={typeRoom.typeRoom}
-              myRef={this.props.refForm.selectTypeRoom}
-            />
-            {!this.props.error.isValidTypeRoom && (
-              <p className="message-error">{this.props.error.messageErrorTypeRoom}</p>
-            )}
-          </div>
-          <MyLabel htmlFor="agree">I consent to the use of my resources</MyLabel>
-          <div>
-            <InputCheckbox name="agree" myRef={this.props.refForm.inputAgree} />
-            {!this.props.error.isValidAgree && (
-              <p className="message-error">{this.props.error.messageErrorAgree}</p>
-            )}
-          </div>
-          <MyLabel htmlFor="promo">Show number of likes</MyLabel>
-          <div>
-            <MyLabel htmlFor="radioYes">Yes</MyLabel>
-            <InputRadio
-              name="promo"
-              id="radioYes"
-              defaultValue="0"
-              myRef={this.props.refForm.inputLikes[0]}
-            />
-            <MyLabel htmlFor="radioNo">No</MyLabel>
-            <InputRadio
-              name="promo"
-              id="radioNo"
-              defaultValue="-1"
-              myRef={this.props.refForm.inputLikes[1]}
-            />
-            {!this.props.error.isValidLikes && (
-              <p className="message-error">{this.props.error.messageErrorLikes}</p>
-            )}
-          </div>
-          <MyLabel htmlFor="file">Upload file:</MyLabel>
-          <div>
-            <InputFile name="file" myRef={this.props.refForm.inputFile} />
-            {!this.props.error.isValidFile && (
-              <p className="message-error">{this.props.error.messageErrorFile}</p>
-            )}
-          </div>
-          <div className="button-center">
-            <MyButton>Submit</MyButton>
-          </div>
-        </form>
-      </>
-    );
-  }
+function CreateCardForm(props: IFormCallbackNon): JSX.Element {
+  const { handleSubmit, control } = useForm<TFormValues>({
+    defaultValues: {
+      name: '',
+      price: '',
+      date: '',
+    },
+    mode: 'onSubmit',
+    reValidateMode: 'onSubmit',
+  });
+  const onSubmit = (data: TFormValues) => console.log(data);
+  const modal = props.error.showModal ? <ModalWindow /> : null;
+  return (
+    <>
+      {modal}
+      <form className="container_search" onSubmit={handleSubmit(onSubmit)}>
+        <MyLabel htmlFor="name">Name Project:</MyLabel>
+        <InputText
+          control={control}
+          name="name"
+          rules={{
+            required: 'Error project name',
+            minLength: {
+              value: 2,
+              message: 'Length min 2',
+            },
+            pattern: {
+              value: /^[A-Z]{1}[a-zA-Z]{1,24}$/,
+              message: 'Error project name',
+            },
+          }}
+        />
+        <MyLabel htmlFor="price">Price:</MyLabel>
+        <InputNumber
+          control={control}
+          name="price"
+          rules={{
+            required: 'Error price',
+            minLength: {
+              value: 1,
+              message: 'Enter price',
+            },
+            pattern: {
+              value: /^[0-9]{0,15}$/,
+              message: 'Error price',
+            },
+          }}
+        />
+        <MyLabel htmlFor="description">Description:</MyLabel>
+        <MyTextarea
+          control={control}
+          name="description"
+          rules={{
+            required: 'Error description',
+            minLength: {
+              value: 5,
+              message: 'Length min 5',
+            },
+            maxLength: {
+              value: 100,
+              message: 'Length max 100',
+            },
+          }}
+        />
+        <MyLabel htmlFor="date">Date:</MyLabel>
+        <InputDate
+          control={control}
+          name="date"
+          rules={{
+            required: 'Error date',
+            minLength: {
+              value: 6,
+              message: 'Error date',
+            },
+          }}
+        />
+        <div className="button-center">
+          <MyButton>Submit</MyButton>
+        </div>
+      </form>
+    </>
+  );
 }
 
+*/
+import { useForm } from 'react-hook-form';
+
+import { ModalWindow } from '../modalWindow/ModalWindow';
+import { IFormCallbackNon } from '../../type';
+import { MyLabel, MyButton } from '../UI';
+import typeRoom from '../../assets/json/typeRoom.json';
+import './CreateCardForm.css';
+
+type TFormValues = {
+  name: string;
+  price: string;
+  description: string;
+  date: string;
+  selectRoom: string;
+  agree: string;
+  promo: string;
+  file: string;
+};
+
+function CreateCardForm(props: IFormCallbackNon): JSX.Element {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<TFormValues>({
+    mode: 'onSubmit',
+    reValidateMode: 'onSubmit',
+  });
+  const onSubmit = handleSubmit((data) => {
+    console.log(data, errors);
+    reset();
+  });
+
+  const modal = props.error.showModal ? <ModalWindow /> : null;
+  return (
+    <>
+      {modal}
+      <form name="form" className="container_search" onSubmit={onSubmit} ref={props.refForm.form}>
+        <MyLabel htmlFor="name">Name Project:</MyLabel>
+        <div>
+          <input
+            {...register('name', {
+              required: 'Error project name',
+              minLength: {
+                value: 2,
+                message: 'Length min 2',
+              },
+              pattern: {
+                value: /^[A-Z]{1}[a-zA-Z]{1,24}$/,
+                message: 'Error project name',
+              },
+            })}
+            name="name"
+            placeholder="Project name"
+            className="input-text"
+          />
+          {errors?.name && <p className="message-error">{errors.name.message}</p>}
+        </div>
+        <MyLabel htmlFor="price">Price:</MyLabel>
+        <div>
+          <input
+            {...register('price', {
+              required: 'Error price',
+              minLength: {
+                value: 1,
+                message: 'Enter price',
+              },
+              pattern: {
+                value: /^[0-9]{0,15}$/,
+                message: 'Error price',
+              },
+            })}
+            name="price"
+            placeholder="Project price"
+            className="input-text"
+          />
+          {errors?.price && <p className="message-error">{errors.price.message}</p>}
+        </div>
+        <MyLabel htmlFor="description">Description:</MyLabel>
+        <div>
+          <textarea
+            {...register('description', {
+              required: 'Error description',
+              minLength: {
+                value: 5,
+                message: 'Length min 5',
+              },
+              maxLength: {
+                value: 100,
+                message: 'Length max 100',
+              },
+            })}
+            name="description"
+            placeholder="Description"
+            className="input-textarea"
+          />
+          {errors?.description && <p className="message-error">{errors.description.message}</p>}
+        </div>
+        <MyLabel htmlFor="date">Date:</MyLabel>
+        <div>
+          <input
+            {...register('date', {
+              required: 'Error date',
+            })}
+            name="date"
+            type="date"
+            className="input-date"
+          />
+          {errors?.date && <p className="message-error">{errors.date.message}</p>}
+        </div>
+        <MyLabel htmlFor="selectRoom">Type room:</MyLabel>
+        <div>
+          <select
+            {...register('selectRoom', {
+              required: 'Error type room',
+              minLength: {
+                value: 1,
+                message: 'Error type room',
+              },
+            })}
+            name="selectRoom"
+            className="select"
+          >
+            <option value="">Choose type</option>
+            {typeRoom.typeRoom.map((item) => (
+              <option value={item} key={item}>
+                {item}
+              </option>
+            ))}
+          </select>
+          {errors?.selectRoom && <p className="message-error">{errors.selectRoom.message}</p>}
+        </div>
+        <MyLabel htmlFor="agree">I consent to the use of my resources</MyLabel>
+        <div>
+          <input
+            {...register('agree', {
+              required: 'Error agree',
+            })}
+            type="checkbox"
+            name="agree"
+            className="input-checkbox"
+          />
+          {errors?.agree && <p className="message-error">{errors.agree.message}</p>}
+        </div>
+        <MyLabel htmlFor="promo">Show number of likes</MyLabel>
+        <div>
+          <MyLabel htmlFor="radioYes">Yes</MyLabel>
+          <input
+            {...register('promo', {
+              required: 'Error',
+            })}
+            name="promo"
+            id="radioYes"
+            defaultValue="0"
+            type="radio"
+            className="input-radio"
+          />
+          <MyLabel htmlFor="radioNo">No</MyLabel>
+          <input
+            {...register('promo', {
+              required: 'Error',
+            })}
+            name="promo"
+            id="radioNo"
+            defaultValue="-1"
+            type="radio"
+            className="input-radio"
+          />
+          {errors?.promo && <p className="message-error">{errors.promo.message}</p>}
+        </div>
+        <MyLabel htmlFor="file">Upload file:</MyLabel>
+        <div>
+          <input
+            {...register('file', {
+              required: 'Error',
+            })}
+            name="file"
+            type="file"
+            accept="image/*"
+            className="input-file"
+            role="role-file"
+          />
+          {!props.error.isValidFile && (
+            <p className="message-error">{props.error.messageErrorFile}</p>
+          )}
+          {errors?.file && <p className="message-error">{errors.file.message}</p>}
+        </div>
+        <div className="button-center">
+          <MyButton>Submit</MyButton>
+        </div>
+      </form>
+    </>
+  );
+}
+/**
+        
+        
+        
+ */
 export { CreateCardForm };

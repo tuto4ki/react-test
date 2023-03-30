@@ -1,14 +1,17 @@
-import React from 'react';
+import { useController, UseControllerProps } from 'react-hook-form';
+
+import { TFormValues } from 'type';
 import './InputDate.css';
 
-interface IInputDateProps {
-  name: string;
-  myRef: React.RefObject<HTMLInputElement>;
-}
+function InputDate(props: UseControllerProps<TFormValues>) {
+  const { field, fieldState } = useController(props);
 
-function InputDate(props: IInputDateProps) {
-  const { name, myRef } = props;
-  return <input type="date" className="input-date" ref={myRef} name={name} role="role-date" />;
+  return (
+    <div>
+      <input {...field} type="date" className="input-date" role="role-date" />
+      <p className="message-error">{fieldState.error ? fieldState.error.message : ''}</p>
+    </div>
+  );
 }
 
 export { InputDate };

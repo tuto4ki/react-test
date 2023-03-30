@@ -3,11 +3,11 @@ import './InputCheckbox.css';
 
 interface IInputCheckboxProps {
   name: string;
-  myRef: React.RefObject<HTMLInputElement>;
+  // myRef: React.RefObject<HTMLInputElement>;
 }
 
 function InputCheckbox(props: IInputCheckboxProps): JSX.Element {
-  return <input type="checkbox" name={props.name} className="input-checkbox" ref={props.myRef} />;
+  return <input type="checkbox" name={props.name} className="input-checkbox" />;
 }
 
 export { InputCheckbox };

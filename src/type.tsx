@@ -74,3 +74,11 @@ interface IRefForm {
   inputLikes: Array<RefObject<HTMLInputElement>>;
   inputFile: RefObject<HTMLInputElement>;
 }
+
+export type TFormValues = {
+  name?: string;
+  price?: string;
+  description?: string;
+  date?: string;
+  select?: string;
+};
