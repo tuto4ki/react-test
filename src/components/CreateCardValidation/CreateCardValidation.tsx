@@ -1,4 +1,4 @@
-import { CreateCardForm } from '../createCardForm/CreateCardForm';
+// import { CreateCardForm } from '../createCardForm/CreateCardForm';
 import React from 'react';
 import { IFormCallback, ICreateFormState } from '../../type';
 import {
@@ -111,23 +111,23 @@ class CreateCardValidation extends React.Component<IFormCallback, ICreateFormSta
   }
 
   private onSubmit(): void {
-    const inputName = this.validNameProject();
+    const name = this.validNameProject();
     const price = this.validPrice();
     const description = this.validDescription();
     const date = this.validDate();
-    const selectTypeRoom = this.validTypeRoom();
+    const typeRoom = this.validTypeRoom();
     const inputAgree = this.validAgree();
-    const inputPromo = this.validLike();
-    const inputFile = this.validFile();
+    const likes = this.validLike();
+    const thumbnail = this.validFile();
     if (
-      !inputName ||
+      !name ||
       !price ||
       !description ||
       !date ||
-      !selectTypeRoom ||
+      !typeRoom ||
       !inputAgree ||
-      inputPromo === 1 ||
-      !inputFile
+      likes === 1 ||
+      !thumbnail
     ) {
       this.setState({ showModal: false });
       return;
@@ -136,19 +136,20 @@ class CreateCardValidation extends React.Component<IFormCallback, ICreateFormSta
     setTimeout(() => this.setState({ showModal: false }), 2000);
     this.successData();
     this.props.callback({
-      inputName,
+      name,
       date,
       description,
       price,
-      selectTypeRoom,
+      typeRoom,
       inputAgree,
-      inputPromo,
-      inputFile,
+      likes,
+      thumbnail,
     });
   }
 
   render(): React.ReactNode {
-    return <CreateCardForm callback={this.onSubmit} refForm={this.ref} error={this.state} />;
+    return <div>It`s ok</div>
+    // return <CreateCardForm callback={this.onSubmit} refForm={this.ref} error={this.state} />;
   }
 }
 

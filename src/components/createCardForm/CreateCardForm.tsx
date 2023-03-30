@@ -91,26 +91,28 @@ function CreateCardForm(props: IFormCallbackNon): JSX.Element {
 }
 
 */
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { ModalWindow } from '../modalWindow/ModalWindow';
-import { IFormCallbackNon } from '../../type';
+import { IFormCallback } from '../../type';
 import { MyLabel, MyButton } from '../UI';
-import typeRoom from '../../assets/json/typeRoom.json';
+import typeRoomJSON from '../../assets/json/typeRoom.json';
 import './CreateCardForm.css';
 
 type TFormValues = {
   name: string;
-  price: string;
+  price: number;
   description: string;
   date: string;
-  selectRoom: string;
+  typeRoom: string;
   agree: string;
-  promo: string;
-  file: string;
+  likes: number;
+  file: FileList;
 };
 
-function CreateCardForm(props: IFormCallbackNon): JSX.Element {
+function CreateCardForm(props: IFormCallback): JSX.Element {
+  const [isModalWindow, setIsModalWindow] = useState(false);
   const {
     register,
     handleSubmit,
@@ -121,15 +123,25 @@ function CreateCardForm(props: IFormCallbackNon): JSX.Element {
     reValidateMode: 'onSubmit',
   });
   const onSubmit = handleSubmit((data) => {
-    console.log(data, errors);
+    props.callback({
+      name: data.name,
+      date: data.date,
+      description: data.description,
+      price: data.price,
+      typeRoom: data.typeRoom,
+      inputAgree: data.agree,
+      likes: data.likes,
+      thumbnail: URL.createObjectURL(data.file[0]),
+    });
+    setIsModalWindow(true);
+    setTimeout(() => setIsModalWindow(false), 2000);
     reset();
   });
 
-  const modal = props.error.showModal ? <ModalWindow /> : null;
   return (
     <>
-      {modal}
-      <form name="form" className="container_search" onSubmit={onSubmit} ref={props.refForm.form}>
+      {isModalWindow && <ModalWindow />}
+      <form name="form" className="container_search" onSubmit={onSubmit}>
         <MyLabel htmlFor="name">Name Project:</MyLabel>
         <div>
           <input
@@ -205,24 +217,24 @@ function CreateCardForm(props: IFormCallbackNon): JSX.Element {
         <MyLabel htmlFor="selectRoom">Type room:</MyLabel>
         <div>
           <select
-            {...register('selectRoom', {
+            {...register('typeRoom', {
               required: 'Error type room',
               minLength: {
                 value: 1,
-                message: 'Error type room',
+                message: 'Error type room length',
               },
             })}
-            name="selectRoom"
+            name="typeRoom"
             className="select"
           >
             <option value="">Choose type</option>
-            {typeRoom.typeRoom.map((item) => (
+            {typeRoomJSON.typeRoom.map((item) => (
               <option value={item} key={item}>
                 {item}
               </option>
             ))}
           </select>
-          {errors?.selectRoom && <p className="message-error">{errors.selectRoom.message}</p>}
+          {errors?.typeRoom && <p className="message-error">{errors.typeRoom.message}</p>}
         </div>
         <MyLabel htmlFor="agree">I consent to the use of my resources</MyLabel>
         <div>
@@ -240,7 +252,7 @@ function CreateCardForm(props: IFormCallbackNon): JSX.Element {
         <div>
           <MyLabel htmlFor="radioYes">Yes</MyLabel>
           <input
-            {...register('promo', {
+            {...register('likes', {
               required: 'Error',
             })}
             name="promo"
@@ -251,7 +263,7 @@ function CreateCardForm(props: IFormCallbackNon): JSX.Element {
           />
           <MyLabel htmlFor="radioNo">No</MyLabel>
           <input
-            {...register('promo', {
+            {...register('likes', {
               required: 'Error',
             })}
             name="promo"
@@ -260,7 +272,7 @@ function CreateCardForm(props: IFormCallbackNon): JSX.Element {
             type="radio"
             className="input-radio"
           />
-          {errors?.promo && <p className="message-error">{errors.promo.message}</p>}
+          {errors?.likes && <p className="message-error">{errors.likes.message}</p>}
         </div>
         <MyLabel htmlFor="file">Upload file:</MyLabel>
         <div>
@@ -274,9 +286,6 @@ function CreateCardForm(props: IFormCallbackNon): JSX.Element {
             className="input-file"
             role="role-file"
           />
-          {!props.error.isValidFile && (
-            <p className="message-error">{props.error.messageErrorFile}</p>
-          )}
           {errors?.file && <p className="message-error">{errors.file.message}</p>}
         </div>
         <div className="button-center">
@@ -286,9 +295,5 @@ function CreateCardForm(props: IFormCallbackNon): JSX.Element {
     </>
   );
 }
-/**
-        
-        
-        
- */
+
 export { CreateCardForm };

@@ -5,13 +5,13 @@ import '../../assets/images/iconHeart.svg';
 function ItemCard(props: IItemCard): JSX.Element {
   return (
     <div className="item-card" data-testid="item-card">
-      <img src={props.thumbnail} alt={props.title} className="item-picture" />
+      <img src={props.thumbnail} alt={props.name} className="item-picture" />
       <div className="item-container item-price">
         <p className="price">${props.price}</p>
         {props.date}
       </div>
       <div className="item-container">
-        <h4 className="item-title">{props.title}</h4>
+        <h4 className="item-title">{props.name}</h4>
         <div className="item-description">
           {props.typeRoom}
           <br />

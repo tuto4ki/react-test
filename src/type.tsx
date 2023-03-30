@@ -1,17 +1,16 @@
-import { RefObject } from 'react';
-
 export interface IItemCard {
-  id: number;
-  title: string;
+  id?: number;
+  name: string;
   date: string;
   typeRoom: string;
   description: string;
   price: number;
   likes: number;
-  view: number;
-  rating: number;
+  view?: number;
+  rating?: number;
   thumbnail: string;
-  images: string[];
+  images?: string[];
+  inputAgree?: string;
 }
 
 export interface IStatePage {
@@ -21,26 +20,8 @@ export interface IRouter {
   title: string;
   callback: (title: string) => void;
 }
-
-export type TCreateItem = {
-  inputName: string;
-  date: string;
-  description: string;
-  price: number;
-  selectTypeRoom: string;
-  inputAgree: string;
-  inputPromo: number;
-  inputFile: string;
-};
-
 export interface IFormCallback {
-  callback: (state: TCreateItem) => void;
-}
-
-export interface IFormCallbackNon {
-  callback: () => void;
-  refForm: IRefForm;
-  error: ICreateFormState;
+  callback: (state: IItemCard) => void;
 }
 
 export interface ICreateFormState {
@@ -61,18 +42,6 @@ export interface ICreateFormState {
   isValidFile: boolean;
   messageErrorFile: string;
   showModal: boolean;
-}
-
-interface IRefForm {
-  form: RefObject<HTMLFormElement>;
-  inputName: RefObject<HTMLInputElement>;
-  inputPrice: RefObject<HTMLInputElement>;
-  description: RefObject<HTMLTextAreaElement>;
-  inputDate: RefObject<HTMLInputElement>;
-  selectTypeRoom: RefObject<HTMLSelectElement>;
-  inputAgree: RefObject<HTMLInputElement>;
-  inputLikes: Array<RefObject<HTMLInputElement>>;
-  inputFile: RefObject<HTMLInputElement>;
 }
 
 export type TFormValues = {
