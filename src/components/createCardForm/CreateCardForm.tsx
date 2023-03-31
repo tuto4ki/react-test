@@ -223,7 +223,6 @@ function CreateCardForm(props: IFormCallback): JSX.Element {
     reValidateMode: 'onSubmit',
   });
   const onSubmit = handleSubmit((data) => {
-    console.log(data);
     props.callback({
       name: data.name,
       date: data.date,
