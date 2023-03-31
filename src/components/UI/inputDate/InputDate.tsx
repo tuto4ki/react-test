@@ -1,9 +1,6 @@
-import { useController, UseControllerProps } from 'react-hook-form';
-
-import { TFormValues } from 'type';
-import './InputDate.css';
-
-function InputDate(props: UseControllerProps<TFormValues>) {
+// import { useController, UseControllerProps } from 'react-hook-form';
+/*
+function InputDate(props: UseControllerProps) {
   const { field, fieldState } = useController(props);
 
   return (
@@ -13,5 +10,14 @@ function InputDate(props: UseControllerProps<TFormValues>) {
     </div>
   );
 }
+*/
+import React from 'react';
+
+import { TInputProps } from 'type';
+import './InputDate.css';
+
+const InputDate = React.forwardRef<HTMLInputElement, TInputProps>((props, ref) => (
+  <input ref={ref} {...props} type="date" className="input-date" role="role-date" />
+));
 
 export { InputDate };

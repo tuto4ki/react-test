@@ -1,18 +1,26 @@
-import React from 'react';
+/*
+import { useController, UseControllerProps } from 'react-hook-form';
+
 import './InputRadio.css';
 
-interface IInputRadioProps {
-  name: string;
-  id: string;
-  // myRef: React.RefObject<HTMLInputElement>;
-  defaultValue: string;
-}
+function InputRadio(props: UseControllerProps) {
+  const { field, fieldState } = useController(props);
 
-function InputRadio(props: IInputRadioProps): JSX.Element {
-  const { name, id, defaultValue } = props;
   return (
-    <input type="radio" name={name} id={id} className="input-radio" defaultValue={defaultValue} />
+    <span>
+      <input {...field} type="radio" className="input-radio" />
+      <p className="message-error">{fieldState.error ? fieldState.error.message : ''}</p>
+    </span>
   );
 }
+*/
+import React from 'react';
+
+import { TInputProps } from 'type';
+import './InputRadio.css';
+
+const InputRadio = React.forwardRef<HTMLInputElement, TInputProps>((props, ref) => (
+  <input ref={ref} {...props} className="input-radio" type="radio" />
+));
 
 export { InputRadio };

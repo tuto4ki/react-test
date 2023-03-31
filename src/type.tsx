@@ -23,31 +23,41 @@ export interface IRouter {
 export interface IFormCallback {
   callback: (state: IItemCard) => void;
 }
-
-export interface ICreateFormState {
-  isValidName: boolean;
-  messageErrorName: string;
-  isValidPrice: boolean;
-  messageErrorPrice: string;
-  isValidDescription: boolean;
-  messageErrorDescription: string;
-  isValidDate: boolean;
-  messageErrorDate: string;
-  isValidTypeRoom: boolean;
-  messageErrorTypeRoom: string;
-  isValidAgree: boolean;
-  messageErrorAgree: string;
-  isValidLikes: boolean;
-  messageErrorLikes: string;
-  isValidFile: boolean;
-  messageErrorFile: string;
-  showModal: boolean;
-}
-
+/*
 export type TFormValues = {
   name?: string;
   price?: string;
   description?: string;
   date?: string;
-  select?: string;
+  selectRoom?: string;
+  agree?: string;
+  likes?: string;
+  file?: FileList | string;
+  radioSelection?: string;
+};
+*/
+export type TInputProps = React.DetailedHTMLProps<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>;
+
+export type TTextareaProps = React.DetailedHTMLProps<
+  React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+  HTMLTextAreaElement
+>;
+
+export type TSelectProps = React.DetailedHTMLProps<
+  React.SelectHTMLAttributes<HTMLSelectElement>,
+  HTMLSelectElement
+> & { options: Array<string> };
+
+export type TFormValues = {
+  name: string;
+  price: number;
+  description: string;
+  date: string;
+  typeRoom: string;
+  agree: string;
+  likes: number;
+  file: FileList;
 };

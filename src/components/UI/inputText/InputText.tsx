@@ -1,11 +1,10 @@
-import { useController, UseControllerProps } from 'react-hook-form';
-
-import { TFormValues } from 'type';
-import './InputText.css';
-
-function InputText(props: UseControllerProps<TFormValues>) {
+/*
+interface IInputText {
+  register: userfor;
+  name: string;
+}
+function InputText(props: IInputText): JSX.Element {
   const { field, fieldState } = useController(props);
-  // const { field: input } = useController({ name: 'name' })
 
   return (
     <div>
@@ -14,5 +13,14 @@ function InputText(props: UseControllerProps<TFormValues>) {
     </div>
   );
 }
+*/
+import React from 'react';
+
+import { TInputProps } from 'type';
+import './InputText.css';
+
+const InputText = React.forwardRef<HTMLInputElement, TInputProps>((props, ref) => (
+  <input ref={ref} {...props} className="input-text" placeholder={props.name} />
+));
 
 export { InputText };
