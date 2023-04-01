@@ -7,4 +7,3 @@ export * from './inputRadio/InputRadio';
 export * from './inputCheckbox/InputCheckbox';
 export * from './mySelect/MySelect';
 export * from './myButton/MyButton';
-export * from './wrapperRadioGroup/WrapperRadioGroup';

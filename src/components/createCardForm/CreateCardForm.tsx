@@ -1,197 +1,3 @@
-/*
-import { useForm } from 'react-hook-form';
-
-import {
-  InputText,
-  MyLabel,
-  MyButton,
-  MyTextarea,
-  InputDate,
-  MySelect,
-  InputCheckbox,
-} from '../UI';
-import { ModalWindow } from '../modalWindow/ModalWindow';
-import { IFormCallback, TFormValues } from '../../type';
-import './CreateCardForm.css';
-import { useEffect, useState } from 'react';
-
-function CreateCardForm(props: IFormCallback): JSX.Element {
-  const [isModalWindow, setIsModalWindow] = useState(false);
-  const {
-    handleSubmit,
-    control,
-    reset,
-    register,
-    formState: { errors },
-  } = useForm<TFormValues>({
-    defaultValues: {
-      name: '',
-      price: '',
-      date: '',
-      description: '',
-      selectRoom: '',
-      agree: '',
-      likes: '',
-    },
-    mode: 'onSubmit',
-    reValidateMode: 'onSubmit',
-  });
-  const onSubmit = (data: TFormValues) => {
-    console.log(data);
-    props.callback({
-      name: String(data.name),
-      date: String(data.date),
-      description: String(data.description),
-      price: Number(data.price),
-      typeRoom: String(data.selectRoom),
-      inputAgree: String(data.agree),
-      likes: Number(data.likes),
-      thumbnail: URL.createObjectURL((data.file as FileList)[0]),
-    });
-    setIsModalWindow(true);
-    setTimeout(() => setIsModalWindow(false), 2000);
-  };
-
-  useEffect(() => {
-    if (isModalWindow) {
-      reset();
-    }
-  }, [isModalWindow]);
-
-  return (
-    <>
-      {isModalWindow && <ModalWindow />}
-      <form className="container_search" onSubmit={handleSubmit(onSubmit)}>
-        <MyLabel htmlFor="name">Name Project:</MyLabel>
-        <InputText
-          control={control}
-          name="name"
-          rules={{
-            required: 'Error project name',
-            minLength: {
-              value: 2,
-              message: 'Length min 2',
-            },
-            pattern: {
-              value: /^[A-Z]{1}[a-zA-Z]{1,24}$/,
-              message: 'Error project name',
-            },
-          }}
-        />
-        <MyLabel htmlFor="price">Price:</MyLabel>
-        <InputText
-          control={control}
-          name="price"
-          rules={{
-            required: 'Error price',
-            minLength: {
-              value: 1,
-              message: 'Enter price',
-            },
-            pattern: {
-              value: /^[0-9]{0,15}$/,
-              message: 'Error price',
-            },
-          }}
-        />
-        <MyLabel htmlFor="description">Description:</MyLabel>
-        <MyTextarea
-          control={control}
-          name="description"
-          rules={{
-            required: 'Error description',
-            minLength: {
-              value: 5,
-              message: 'Length min 5',
-            },
-            maxLength: {
-              value: 100,
-              message: 'Length max 100',
-            },
-          }}
-        />
-        <MyLabel htmlFor="date">Date:</MyLabel>
-        <InputDate
-          control={control}
-          name="date"
-          rules={{
-            required: 'Error date',
-            minLength: {
-              value: 6,
-              message: 'Error date',
-            },
-          }}
-        />
-        <MyLabel htmlFor="selectRoom">Type room:</MyLabel>
-        <MySelect
-          control={control}
-          name="selectRoom"
-          rules={{
-            required: 'Error type room',
-            minLength: {
-              value: 1,
-              message: 'Error type room',
-            },
-          }}
-        />
-        <MyLabel htmlFor="agree">I consent to the use of my resources</MyLabel>
-        <InputCheckbox
-          control={control}
-          name="agree"
-          rules={{
-            required: 'Error agree',
-          }}
-          defaultValue="check"
-        />
-        <MyLabel htmlFor="promo">Show number of likes</MyLabel>
-        <div>
-          <MyLabel htmlFor="radioYes">Yes</MyLabel>
-          <input
-            {...register('likes', {
-              required: 'Error',
-            })}
-            name="promo"
-            id="radioYes"
-            defaultValue="0"
-            type="radio"
-            className="input-radio"
-          />
-          <MyLabel htmlFor="radioNo">No</MyLabel>
-          <input
-            {...register('likes', {
-              required: 'Error',
-            })}
-            name="promo"
-            id="radioNo"
-            defaultValue="-1"
-            type="radio"
-            className="input-radio"
-          />
-          {errors?.likes && <p className="message-error">{errors.likes.message}</p>}
-        </div>
-        <MyLabel htmlFor="file">Upload file:</MyLabel>
-        <div>
-          <input
-            {...register('file', {
-              required: 'Error',
-            })}
-            name="file"
-            type="file"
-            accept="image/*"
-            className="input-file"
-            role="role-file"
-          />
-          {errors?.file && <p className="message-error">{errors.file.message}</p>}
-        </div>
-        <div className="button-center">
-          <MyButton>Submit</MyButton>
-        </div>
-      </form>
-    </>
-  );
-}
-
-*/
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -255,6 +61,10 @@ function CreateCardForm(props: IFormCallback): JSX.Element {
                 value: /^[A-Z]{1}[a-zA-Z]{1,24}$/,
                 message: 'Error project name',
               },
+              maxLength: {
+                value: 25,
+                message: 'Length max 25',
+              },
             })}
             name="name"
           />
@@ -300,7 +110,7 @@ function CreateCardForm(props: IFormCallback): JSX.Element {
         <div>
           <InputDate
             {...register('date', {
-              required: 'Error date',
+              required: 'Choose date',
             })}
             name="date"
           />
@@ -313,7 +123,7 @@ function CreateCardForm(props: IFormCallback): JSX.Element {
               required: 'Error type room',
               minLength: {
                 value: 3,
-                message: 'Error type room length',
+                message: 'Choose type room',
               },
             })}
             options={typeRoomJSON.typeRoom}
@@ -326,7 +136,7 @@ function CreateCardForm(props: IFormCallback): JSX.Element {
         <div>
           <InputCheckbox
             {...register('agree', {
-              required: 'Error agree',
+              required: 'Add checkbox',
             })}
             name="agree"
           />
@@ -337,7 +147,7 @@ function CreateCardForm(props: IFormCallback): JSX.Element {
           <MyLabel htmlFor="radioYes">Yes</MyLabel>
           <InputRadio
             {...register('likes', {
-              required: 'Error',
+              required: 'Error likes',
             })}
             name="likes"
             id="radioYes"
@@ -346,19 +156,21 @@ function CreateCardForm(props: IFormCallback): JSX.Element {
           <MyLabel htmlFor="radioNo">No</MyLabel>
           <InputRadio
             {...register('likes', {
-              required: 'Error',
+              required: 'Error likes',
             })}
             name="likes"
             id="radioNo"
             value="-1"
           />
-          {errors?.likes?.type === 'required' && <p className="message-error">Error likes</p>}
+          {errors?.likes?.type === 'required' && (
+            <p className="message-error">{errors?.likes.message}</p>
+          )}
         </div>
         <MyLabel htmlFor="file">Upload file:</MyLabel>
         <div>
           <InputFile
             {...register('file', {
-              required: 'Error',
+              required: 'Add file',
             })}
             name="file"
           />

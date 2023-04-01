@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { IRouter } from 'type';
 
 function AboutPage(props: IRouter): JSX.Element {

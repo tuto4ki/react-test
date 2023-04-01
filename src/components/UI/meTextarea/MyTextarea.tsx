@@ -1,19 +1,3 @@
-/*
-import { useController, UseControllerProps } from 'react-hook-form';
-
-import './MyTextarea.css';
-
-function MyTextarea(props: UseControllerProps): JSX.Element {
-  const { field, fieldState } = useController(props);
-
-  return (
-    <div>
-      <textarea {...field} className="input-textarea" placeholder={props.name} />
-      <p className="message-error">{fieldState.error ? fieldState.error.message : ''}</p>
-    </div>
-  );
-}
-*/
 import React from 'react';
 
 import { TTextareaProps } from 'type';

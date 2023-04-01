@@ -23,19 +23,7 @@ export interface IRouter {
 export interface IFormCallback {
   callback: (state: IItemCard) => void;
 }
-/*
-export type TFormValues = {
-  name?: string;
-  price?: string;
-  description?: string;
-  date?: string;
-  selectRoom?: string;
-  agree?: string;
-  likes?: string;
-  file?: FileList | string;
-  radioSelection?: string;
-};
-*/
+
 export type TInputProps = React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
