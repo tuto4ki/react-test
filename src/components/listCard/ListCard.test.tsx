@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 const dataCard = [
   {
     id: 1,
-    title: 'Living room',
+    name: 'Living room',
     date: '2023-01-01',
     typeRoom: 'Living room',
     description: 'Architecture and interior design focused',
@@ -16,7 +16,7 @@ const dataCard = [
   },
   {
     id: 2,
-    title: 'Living room',
+    name: 'Living room',
     date: '2023-01-01',
     typeRoom: 'Living room',
     description: 'Architecture and interior design ability. villas built to perfection in UAE',
@@ -29,7 +29,7 @@ const dataCard = [
   },
 ];
 
-describe('renders learn react link', () => {
+describe('renders component', () => {
   it('render list', () => {
     render(<ListCard data={dataCard} />);
     expect(screen.getAllByTestId('item-card').length).toEqual(dataCard.length);

@@ -1,8 +1,8 @@
 import { SearchBar } from './SearchBar';
 import { fireEvent, render, screen } from '@testing-library/react';
 
-describe('renders learn react link', () => {
-  it('render list', () => {
+describe('renders component', () => {
+  it('render search', () => {
     const testStr = 'test search';
     render(<SearchBar />);
     const input = screen.getByPlaceholderText('Search bar');

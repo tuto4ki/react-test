@@ -20,11 +20,21 @@ const data = {
   inputAgree: '',
 };
 
-describe('renders learn react link', () => {
-  it('render list', () => {
+describe('renders component', () => {
+  it('render img name', () => {
     render(<ItemCard {...data} />);
     expect(screen.getByText(data.name)).toBeInTheDocument();
+  });
+  it('render img alt text', () => {
+    render(<ItemCard {...data} />);
     expect(screen.getByAltText(data.name)).toBeInTheDocument();
+  });
+  it('render img id', () => {
+    render(<ItemCard {...data} />);
     expect(screen.getAllByTestId('item-card').length).toEqual(1);
+  });
+  it('render likes', () => {
+    render(<ItemCard {...data} />);
+    expect(screen.getByText(data.likes)).toBeInTheDocument();
   });
 });

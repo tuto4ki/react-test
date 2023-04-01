@@ -19,7 +19,9 @@ function ItemCard(props: IItemCard): JSX.Element {
         </div>
       </div>
       <div className="item-container statistics">
-        <span className="icon-heart">{props.likes >= 0 ? props.likes : ''}</span>
+        <span className="icon-heart" role="role-likes">
+          {props.likes >= 0 ? props.likes : ''}
+        </span>
         <span className="icon-view">{props.view}</span>
       </div>
     </div>
