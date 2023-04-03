@@ -15,6 +15,7 @@ import {
   InputRadio,
 } from '../UI';
 import typeRoomJSON from '../../assets/json/typeRoom.json';
+import errorMessageJSON from '../../assets/json/errorMessage.json';
 import './CreateCardForm.css';
 
 function CreateCardForm(props: IFormCallback): JSX.Element {
@@ -52,18 +53,18 @@ function CreateCardForm(props: IFormCallback): JSX.Element {
         <div>
           <InputText
             {...register('name', {
-              required: 'Error project name',
+              required: errorMessageJSON.name.custom,
               minLength: {
                 value: 2,
-                message: 'Length min 2',
+                message: errorMessageJSON.name.minLength,
               },
               pattern: {
                 value: /^[A-Z]{1}[a-zA-Z]{1,24}$/,
-                message: 'Error project name',
+                message: errorMessageJSON.name.custom,
               },
               maxLength: {
                 value: 25,
-                message: 'Length max 25',
+                message: errorMessageJSON.name.minLength,
               },
             })}
             name="name"
@@ -74,14 +75,14 @@ function CreateCardForm(props: IFormCallback): JSX.Element {
         <div>
           <InputText
             {...register('price', {
-              required: 'Error price',
+              required: errorMessageJSON.price.custom,
               minLength: {
                 value: 1,
-                message: 'Enter price',
+                message: errorMessageJSON.price.custom,
               },
               pattern: {
-                value: /^[0-9]{0,15}$/,
-                message: 'Error price',
+                value: /^[1-9][0-9]{0,9}$/,
+                message: errorMessageJSON.price.custom,
               },
             })}
             name="price"
@@ -92,14 +93,14 @@ function CreateCardForm(props: IFormCallback): JSX.Element {
         <div>
           <MyTextarea
             {...register('description', {
-              required: 'Error description',
+              required: errorMessageJSON.description.custom,
               minLength: {
                 value: 5,
-                message: 'Length min 5',
+                message: errorMessageJSON.description.minLength,
               },
               maxLength: {
                 value: 100,
-                message: 'Length max 100',
+                message: errorMessageJSON.description.maxLength,
               },
             })}
             name="description"
@@ -120,10 +121,10 @@ function CreateCardForm(props: IFormCallback): JSX.Element {
         <div>
           <MySelect
             {...register('typeRoom', {
-              required: 'Error type room',
+              required: errorMessageJSON.typeRoom.custom,
               minLength: {
                 value: 3,
-                message: 'Choose type room',
+                message: errorMessageJSON.typeRoom.custom,
               },
             })}
             options={typeRoomJSON.typeRoom}
@@ -136,7 +137,7 @@ function CreateCardForm(props: IFormCallback): JSX.Element {
         <div>
           <InputCheckbox
             {...register('agree', {
-              required: 'Add checkbox',
+              required: errorMessageJSON.agree.custom,
             })}
             name="agree"
           />
@@ -147,7 +148,7 @@ function CreateCardForm(props: IFormCallback): JSX.Element {
           <MyLabel htmlFor="radioYes">Yes</MyLabel>
           <InputRadio
             {...register('likes', {
-              required: 'Error likes',
+              required: errorMessageJSON.likes.custom,
             })}
             name="likes"
             id="radioYes"
@@ -156,7 +157,7 @@ function CreateCardForm(props: IFormCallback): JSX.Element {
           <MyLabel htmlFor="radioNo">No</MyLabel>
           <InputRadio
             {...register('likes', {
-              required: 'Error likes',
+              required: errorMessageJSON.likes.custom,
             })}
             name="likes"
             id="radioNo"
@@ -170,7 +171,7 @@ function CreateCardForm(props: IFormCallback): JSX.Element {
         <div>
           <InputFile
             {...register('file', {
-              required: 'Add file',
+              required: errorMessageJSON.file.custom,
             })}
             name="file"
           />
