@@ -46,7 +46,7 @@ function CreateCardForm(props: IFormCallback): JSX.Element {
 
   return (
     <>
-      {isModalWindow && <div className="modal">Card added</div>}
+      {isModalWindow && <div className="message-modal">Card added</div>}
       <form name="form" className="container_search" onSubmit={onSubmit}>
         <MyLabel htmlFor="name">Name Project:</MyLabel>
         <div>
