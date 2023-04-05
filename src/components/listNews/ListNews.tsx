@@ -1,12 +1,18 @@
 import { IItemNews } from '../../type';
-import './ListNews.css';
 import { ItemNews } from '../../components/itemNews/ItemNews';
+import './ListNews.css';
 
-function ListNews(props: { data: Array<IItemNews> }) {
+interface IPropsListNews {
+  data: Array<IItemNews>;
+  newsShow: (news: IItemNews) => void;
+}
+
+function ListNews(props: IPropsListNews) {
+  const { data, newsShow } = props;
   return (
     <section className="cards">
-      {props.data.map((item) => (
-        <ItemNews {...item} key={item.url} />
+      {data.map((item) => (
+        <ItemNews news={item} onClick={newsShow} key={item.url} />
       ))}
     </section>
   );

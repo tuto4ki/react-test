@@ -1,8 +1,9 @@
 .item-card-news {
   background-color: #ffffff;
-    border: 2px solid antiquewhite;
-    border-radius: 5px;
-    overflow: hidden;
+  border: 2px solid antiquewhite;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
 }
 .item-picture-news {
   width: 100%;

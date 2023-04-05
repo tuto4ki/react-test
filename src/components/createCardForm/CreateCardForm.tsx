@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { ModalWindow } from '../modalWindow/ModalWindow';
 import { IFormCallback, TFormValues } from '../../type';
 import {
   MyLabel,
@@ -47,7 +46,7 @@ function CreateCardForm(props: IFormCallback): JSX.Element {
 
   return (
     <>
-      {isModalWindow && <ModalWindow />}
+      {isModalWindow && <div className="modal">Card added</div>}
       <form name="form" className="container_search" onSubmit={onSubmit}>
         <MyLabel htmlFor="name">Name Project:</MyLabel>
         <div>
