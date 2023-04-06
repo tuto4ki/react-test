@@ -4,8 +4,9 @@ import { SearchBar } from '../../components/searchBar/SearchBar';
 import { IRouter, IItemProduct } from 'type';
 import { getApiDate, getApiItem } from '../../services/api';
 import { ListProduct } from '../../components/listProduct/ListProduct';
-import { ModalWindow } from '../../components/modalWindow/ModalWindow';
+import { ModalWindow } from '../../components/UI/modalWindow/ModalWindow';
 import { DetailedCard } from '../../components/detailedCard/DetailedCard';
+import { Loader } from '../../components/UI/loader/Loader';
 
 const TIMEOUT = 500;
 
@@ -65,8 +66,12 @@ function HomePage(props: IRouter): JSX.Element {
     <>
       <h2>Home page</h2>
       <SearchBar callback={search} />
-      {isLoading ? 'Loading...' : ''}
-      {isDataFound ? <ListProduct data={listCard} newsShow={showDetailedNews} /> : 'News not found'}
+      {isLoading ? <Loader /> : ''}
+      {isDataFound ? (
+        <ListProduct data={listCard} newsShow={showDetailedNews} />
+      ) : (
+        'Product not found'
+      )}
       <ModalWindow active={isModalActive} setActive={setIsModalActive}>
         <DetailedCard product={newsShow} />
       </ModalWindow>
