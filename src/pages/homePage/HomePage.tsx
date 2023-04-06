@@ -1,26 +1,26 @@
 import { useEffect, useState } from 'react';
 
 import { SearchBar } from '../../components/searchBar/SearchBar';
-import { IRouter, IItemNews } from 'type';
-import { getApiDate } from '../../services/api';
-import { ListNews } from '../../components/listNews/ListNews';
+import { IRouter, IItemProduct } from 'type';
+import { getApiDate, getApiItem } from '../../services/api';
+import { ListProduct } from '../../components/listProduct/ListProduct';
 import { ModalWindow } from '../../components/modalWindow/ModalWindow';
 import { DetailedCard } from '../../components/detailedCard/DetailedCard';
 
 const TIMEOUT = 500;
 
 function HomePage(props: IRouter): JSX.Element {
-  const [listCard, setListCard] = useState<IItemNews[]>([]);
+  const [listCard, setListCard] = useState<IItemProduct[]>([]);
   const [isModalActive, setIsModalActive] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isDataFound, setIsDataFound] = useState<boolean>(true);
-  const [newsShow, setNewsShow] = useState<IItemNews | null>(null);
+  const [newsShow, setNewsShow] = useState<IItemProduct | null>(null);
   useEffect(() => {
     props.callback(props.title);
   });
 
   useEffect(() => {
-    search('top-headlines?country=us');
+    search('products');
   }, []);
 
   const search = (pathSearch: string) => {
@@ -28,8 +28,8 @@ function HomePage(props: IRouter): JSX.Element {
     setTimeout(() => {
       try {
         getApiDate(pathSearch).then((data) => {
-          setListCard(data.articles);
-          if (data.articles.length) {
+          setListCard(data);
+          if (data.length) {
             setIsDataFound(true);
           } else {
             setIsDataFound(false);
@@ -44,9 +44,21 @@ function HomePage(props: IRouter): JSX.Element {
     }, TIMEOUT);
   };
 
-  const showDetailedNews = (news: IItemNews) => {
-    setNewsShow(news);
-    setIsModalActive(true);
+  const showDetailedNews = (product: IItemProduct) => {
+    setIsLoading(true);
+    setTimeout(() => {
+      try {
+        getApiItem(`product/${product.id}`).then((item) => {
+          setNewsShow(item);
+          setIsModalActive(true);
+        });
+      } catch (error) {
+        console.log(error);
+        setIsDataFound(false);
+      } finally {
+        setIsLoading(false);
+      }
+    }, TIMEOUT);
   };
 
   return (
@@ -54,9 +66,9 @@ function HomePage(props: IRouter): JSX.Element {
       <h2>Home page</h2>
       <SearchBar callback={search} />
       {isLoading ? 'Loading...' : ''}
-      {isDataFound ? <ListNews data={listCard} newsShow={showDetailedNews} /> : 'News not found'}
+      {isDataFound ? <ListProduct data={listCard} newsShow={showDetailedNews} /> : 'News not found'}
       <ModalWindow active={isModalActive} setActive={setIsModalActive}>
-        <DetailedCard news={newsShow} />
+        <DetailedCard product={newsShow} />
       </ModalWindow>
     </>
   );

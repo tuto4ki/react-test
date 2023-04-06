@@ -1,36 +1,35 @@
-import { IItemNews } from 'type';
+import { IItemProduct } from 'type';
 import './DetailedCard.css';
 
 interface IPropsDetailedCard {
-  news: IItemNews | null;
+  product: IItemProduct | null;
 }
 
 function DetailedCard(props: IPropsDetailedCard): JSX.Element {
-  if (props.news) {
-    const { news } = props;
+  if (props.product) {
+    const { product } = props;
     return (
       <div className="detailed-card">
-        <img src={news.urlToImage} alt={news.title} className="detailed-picture" />
-        <h4 className="detailed-title">{news.title}</h4>
-        <div className="detailed-description">
-          {news.description}
-          <br />
-          {news.content}
+        <img src={product.thumbnail} alt={product.title} className="detailed-picture" />
+        <div className="detailed-card-wrapper detailed-title-bg">
+          <h4 className="detailed-title">{product.title}</h4>
+          <p className="price">${product.price}</p>
         </div>
-        <div className="detailed-source">
-          <p>Data publication: {news.publishedAt}</p>
-          <p>Author: {news.author}</p>
-          <p>
-            Source:
-            <a href={news.url} className="detailed_link">
-              {news.source.name}
-            </a>
-          </p>
+        <div className="detailed-card-wrapper">{product.description}</div>
+        <div className="detailed-card-wrapper-line">
+          <p>Brand: {product.brand}</p>
+          <p>Category: {product.category}</p>
+        </div>
+        <div className="detailed-card-wrapper-line detailed-statistics">
+          <span className="icon-heart" role="role-likes">
+            {product.rating}
+          </span>
+          <span className="item-card-stock">Stock: {product.stock}</span>
         </div>
       </div>
     );
   }
-  return <p>News not found</p>;
+  return <p>product not found</p>;
 }
 
 export { DetailedCard };

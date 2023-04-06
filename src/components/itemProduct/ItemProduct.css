@@ -1,0 +1,36 @@
+.item-card-product {
+  background-color: #ffffff;
+  border: 2px solid antiquewhite;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.item-picture-product {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+.item-container-product {
+  padding: 10px;
+  font-size: 1rem;
+}
+.item-container-bg {
+  background-color: antiquewhite;
+}
+.item-title-product {
+  color: #f34b4b;
+  height: 1rem;
+  overflow: hidden;
+}
+.item-description-product {
+  font-size: 0.9rem;
+  overflow: hidden;
+}
+.statistics-product {
+  padding: 10px 0;
+  margin: 0 10px;
+  border-top: 1px solid antiquewhite;
+  display: flex;
+  justify-content: space-between;
+
+}

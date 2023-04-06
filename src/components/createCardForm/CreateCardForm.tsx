@@ -17,6 +17,8 @@ import typeRoomJSON from '../../assets/json/typeRoom.json';
 import errorMessageJSON from '../../assets/json/errorMessage.json';
 import './CreateCardForm.css';
 
+const TIMEOUT = 2000;
+
 function CreateCardForm(props: IFormCallback): JSX.Element {
   const [isModalWindow, setIsModalWindow] = useState(false);
   const {
@@ -40,7 +42,7 @@ function CreateCardForm(props: IFormCallback): JSX.Element {
       thumbnail: URL.createObjectURL(data.file[0]),
     });
     setIsModalWindow(true);
-    setTimeout(() => setIsModalWindow(false), 2000);
+    setTimeout(() => setIsModalWindow(false), TIMEOUT);
     reset();
   });
 

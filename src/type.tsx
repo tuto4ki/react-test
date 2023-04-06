@@ -13,18 +13,18 @@ export interface IItemCard {
   inputAgree?: string;
 }
 
-export interface IItemNews {
-  author: string;
-  content: string;
-  description: string;
-  publishedAt: string;
+export interface IItemProduct {
+  id: number;
   title: string;
-  source: {
-    id: null | number;
-    name: string;
-  }
-  url: string;
-  urlToImage: string;
+  description: string;
+  price: number;
+  discountPercentage: number;
+  rating: number;
+  stock: number;
+  brand: string;
+  category: string;
+  thumbnail: string;
+  images: Array<string>;
 }
 
 export interface IStatePage {
