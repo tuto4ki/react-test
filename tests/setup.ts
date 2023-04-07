@@ -22,10 +22,7 @@ beforeAll(() => {
   });
 });
 
-// afterEach(() => server.resetHandlers());
-
 afterAll(() => {
   cleanup();
   global.fetch = globalFetch;
-  // server.close();
 });
