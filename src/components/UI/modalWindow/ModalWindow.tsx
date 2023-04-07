@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './ModalWindow.css';
 
 interface IPropsModalWindow {
@@ -7,7 +8,7 @@ interface IPropsModalWindow {
   children: React.ReactNode;
 }
 
-function ModalWindow(props: IPropsModalWindow): JSX.Element {
+export function ModalWindow(props: IPropsModalWindow): JSX.Element {
   const { active, setActive, children } = props;
   return (
     <div className={active ? 'modal active' : 'modal'} onClick={() => setActive(false)}>
@@ -24,5 +25,3 @@ function ModalWindow(props: IPropsModalWindow): JSX.Element {
     </div>
   );
 }
-
-export { ModalWindow };

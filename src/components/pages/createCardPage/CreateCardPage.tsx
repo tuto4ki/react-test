@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { ListCard } from '../../components/listCard/ListCard';
-import { IRouter, IItemCard } from '../../type';
-import { CreateCardForm } from '../../components/createCardForm/CreateCardForm';
+import { ListCard } from '../../listCard/ListCard';
+import { IRouter, IItemCard } from '../../../type';
+import { CreateCardForm } from '../../createCardForm/CreateCardForm';
 
 function CreateCardPage(props: IRouter): JSX.Element {
   useEffect(() => {

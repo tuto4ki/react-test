@@ -1,7 +1,7 @@
 import React from 'react';
-import './MyInput.css';
+import './Input.css';
 
-interface IMyInputProps {
+interface IInputProps {
   name: string;
   id?: string;
   type: string;
@@ -12,8 +12,6 @@ interface IMyInputProps {
   onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
 }
 
-function MyInput(props: IMyInputProps): JSX.Element {
+export function Input(props: IInputProps): JSX.Element {
   return <input {...props} />;
 }
-
-export { MyInput };

@@ -3,13 +3,13 @@ import { useForm } from 'react-hook-form';
 
 import { IFormCallback, TFormValues } from '../../type';
 import {
-  MyLabel,
-  MyButton,
+  Label,
+  Button,
   InputText,
   InputFile,
   InputDate,
-  MyTextarea,
-  MySelect,
+  Textarea,
+  Select,
   InputCheckbox,
   InputRadio,
 } from '../UI';
@@ -50,7 +50,7 @@ function CreateCardForm(props: IFormCallback): JSX.Element {
     <>
       {isModalWindow && <div className="message-modal">Card added</div>}
       <form name="form" className="container_search" onSubmit={onSubmit}>
-        <MyLabel htmlFor="name">Name Project:</MyLabel>
+        <Label htmlFor="name">Name Project:</Label>
         <div>
           <InputText
             {...register('name', {
@@ -72,7 +72,7 @@ function CreateCardForm(props: IFormCallback): JSX.Element {
           />
           {errors?.name && <p className="message-error">{errors.name.message}</p>}
         </div>
-        <MyLabel htmlFor="price">Price:</MyLabel>
+        <Label htmlFor="price">Price:</Label>
         <div>
           <InputText
             {...register('price', {
@@ -90,9 +90,9 @@ function CreateCardForm(props: IFormCallback): JSX.Element {
           />
           {errors?.price && <p className="message-error">{errors.price.message}</p>}
         </div>
-        <MyLabel htmlFor="description">Description:</MyLabel>
+        <Label htmlFor="description">Description:</Label>
         <div>
-          <MyTextarea
+          <Textarea
             {...register('description', {
               required: errorMessageJSON.description.custom,
               minLength: {
@@ -108,7 +108,7 @@ function CreateCardForm(props: IFormCallback): JSX.Element {
           />
           {errors?.description && <p className="message-error">{errors.description.message}</p>}
         </div>
-        <MyLabel htmlFor="date">Date:</MyLabel>
+        <Label htmlFor="date">Date:</Label>
         <div>
           <InputDate
             {...register('date', {
@@ -118,9 +118,9 @@ function CreateCardForm(props: IFormCallback): JSX.Element {
           />
           {errors?.date && <p className="message-error">{errors.date.message}</p>}
         </div>
-        <MyLabel htmlFor="selectRoom">Type room:</MyLabel>
+        <Label htmlFor="selectRoom">Type room:</Label>
         <div>
-          <MySelect
+          <Select
             {...register('typeRoom', {
               required: errorMessageJSON.typeRoom.custom,
               minLength: {
@@ -134,7 +134,7 @@ function CreateCardForm(props: IFormCallback): JSX.Element {
           />
           {errors?.typeRoom && <p className="message-error">{errors.typeRoom.message}</p>}
         </div>
-        <MyLabel htmlFor="agree">I consent to the use of my resources</MyLabel>
+        <Label htmlFor="agree">I consent to the use of my resources</Label>
         <div>
           <InputCheckbox
             {...register('agree', {
@@ -144,9 +144,9 @@ function CreateCardForm(props: IFormCallback): JSX.Element {
           />
           {errors?.agree && <p className="message-error">{errors.agree.message}</p>}
         </div>
-        <MyLabel htmlFor="likes">Show number of likes</MyLabel>
+        <Label htmlFor="likes">Show number of likes</Label>
         <div>
-          <MyLabel htmlFor="radioYes">Yes</MyLabel>
+          <Label htmlFor="radioYes">Yes</Label>
           <InputRadio
             {...register('likes', {
               required: errorMessageJSON.likes.custom,
@@ -155,7 +155,7 @@ function CreateCardForm(props: IFormCallback): JSX.Element {
             id="radioYes"
             value="0"
           />
-          <MyLabel htmlFor="radioNo">No</MyLabel>
+          <Label htmlFor="radioNo">No</Label>
           <InputRadio
             {...register('likes', {
               required: errorMessageJSON.likes.custom,
@@ -168,7 +168,7 @@ function CreateCardForm(props: IFormCallback): JSX.Element {
             <p className="message-error">{errors?.likes.message}</p>
           )}
         </div>
-        <MyLabel htmlFor="file">Upload file:</MyLabel>
+        <Label htmlFor="file">Upload file:</Label>
         <div>
           <InputFile
             {...register('file', {
@@ -179,7 +179,7 @@ function CreateCardForm(props: IFormCallback): JSX.Element {
           {errors?.file && <p className="message-error">{errors.file.message}</p>}
         </div>
         <div className="button-center">
-          <MyButton>Submit</MyButton>
+          <Button>Submit</Button>
         </div>
       </form>
     </>

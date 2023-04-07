@@ -2,12 +2,12 @@ import { IItemProduct } from '../../type';
 import { ItemProduct } from '../itemProduct/ItemProduct';
 import './ListProduct.css';
 
-interface IPropsListNews {
+interface IPropsListProduct {
   data: Array<IItemProduct>;
   callback: (product: IItemProduct) => void;
 }
 
-function ListProduct(props: IPropsListNews) {
+function ListProduct(props: IPropsListProduct) {
   const { data, callback } = props;
   return (
     <section className="cards">

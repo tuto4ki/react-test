@@ -50,17 +50,5 @@ describe('Form component', () => {
       userEvent.type(file, '../picture.png');
     }
     expect(container.queryByText(/Error Description/i)).not.toBeInTheDocument();
-    /*
-    const button = container.queryByRole('button');
-    if (button) {
-      fireEvent.click(button);
-      beforeAll(async () => {
-        await handlerFunc();
-        return async () => {
-          expect(handlerFunc).toHaveBeenCalledTimes(1);
-        };
-      });
-      expect(handlerFunc).toHaveBeenCalledTimes(0);
-    }*/
   });
 });

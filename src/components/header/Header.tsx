@@ -5,7 +5,7 @@ import './Header.css';
 
 const setActive = ({ isActive }: { isActive: boolean }) => (isActive ? 'active-link' : '');
 
-function Header(props: IStatePage): JSX.Element {
+export function Header(props: IStatePage): JSX.Element {
   return (
     <header className="container header">
       <NavLink to="/" className={setActive}>
@@ -21,5 +21,3 @@ function Header(props: IStatePage): JSX.Element {
     </header>
   );
 }
-
-export { Header };

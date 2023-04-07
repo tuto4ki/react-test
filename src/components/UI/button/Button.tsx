@@ -1,16 +1,15 @@
 import React from 'react';
-import './MyButton.css';
 
-interface IMyButtonProps {
+import './Button.css';
+
+interface IButtonProps {
   children?: React.ReactNode;
 }
 
-function MyButton(props: IMyButtonProps): JSX.Element {
+export function Button(props: IButtonProps): JSX.Element {
   return (
     <button type="submit" className="button">
       {props.children}
     </button>
   );
 }
-
-export { MyButton };

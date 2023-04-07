@@ -2,7 +2,8 @@ import { IItemProduct } from '../../src/type';
 const BASE_URL = 'https://dummyjson.com';
 
 async function getApiDate(url: string) {
-  const data: { products: IItemProduct[] } = await fetch(`${BASE_URL}/${url}`).then((res) => {
+  const srtSearch = url ? `${BASE_URL}/products/search?q=${url}` : `${BASE_URL}/products`;
+  const data: { products: IItemProduct[] } = await fetch(srtSearch).then((res) => {
     return res.json();
   });
   return data.products;

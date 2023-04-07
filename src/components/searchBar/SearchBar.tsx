@@ -1,19 +1,17 @@
-import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 
-import { MyInput } from '../UI/input/MyInput';
+import { Input } from '../UI/input/Input';
 import './SearchBar.css';
 
 function SearchBar(props: { callback: { (pathSearch: string): void } }): JSX.Element {
+  const { callback } = props;
   const [valueInput, setValueInput] = useState<string>(
     localStorage.getItem('search') ? String(localStorage.getItem('search')) : ''
   );
+
   useEffect(() => {
-    console.log(valueInput);
-    if (valueInput) {
-      props.callback(`products/search?q=${valueInput}`);
-    } else {
-      props.callback('products');
-    }
+    callback(valueInput);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onChange = (e: React.FormEvent<HTMLInputElement>): void => {
@@ -23,12 +21,12 @@ function SearchBar(props: { callback: { (pathSearch: string): void } }): JSX.Ele
   const handleSubmit = async (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     localStorage.setItem('search', valueInput);
-    props.callback(`products/search?q=${valueInput}`);
+    callback(valueInput);
   };
 
   return (
     <form className="container_search" onSubmit={handleSubmit}>
-      <MyInput
+      <Input
         type="text"
         name="search"
         onChange={onChange}

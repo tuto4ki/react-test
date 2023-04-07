@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
+
 import { IRouter } from 'type';
 
-function NotFoundPage(props: IRouter) {
+function AboutPage(props: IRouter): JSX.Element {
   useEffect(() => {
     props.callback(props.title);
   });
-  return <h2>Page not found</h2>;
+  return <h2>About page</h2>;
 }
 
-export { NotFoundPage };
+export { AboutPage };

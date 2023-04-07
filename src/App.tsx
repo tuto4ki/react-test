@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import { HomePage, AboutPage, CreateCardPage, NotFoundPage } from './pages/index';
-import { Layout } from './components/Layout';
+import { HomePage, AboutPage, CreateCardPage, NotFoundPage } from './components/pages/index';
+import { Layout } from './components/layout/Layout';
 import { Header } from './components/header/Header';
 
 function App() {

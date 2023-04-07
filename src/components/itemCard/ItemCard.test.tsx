@@ -1,5 +1,6 @@
-import { ItemCard } from './ItemCard';
 import { render, screen } from '@testing-library/react';
+
+import { ItemCard } from './ItemCard';
 
 const data = {
   id: 1,

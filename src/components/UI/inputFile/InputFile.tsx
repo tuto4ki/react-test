@@ -3,7 +3,7 @@ import React from 'react';
 import { TInputProps } from 'type';
 import './InputFile.css';
 
-const InputFile = React.forwardRef<HTMLInputElement, TInputProps>((props, ref) => (
+export const InputFile = React.forwardRef<HTMLInputElement, TInputProps>((props, ref) => (
   <input
     ref={ref}
     {...props}
@@ -13,5 +13,3 @@ const InputFile = React.forwardRef<HTMLInputElement, TInputProps>((props, ref) =
     role="role-file"
   />
 ));
-
-export { InputFile };

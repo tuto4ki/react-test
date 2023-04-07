@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 
-import { SearchBar } from '../../components/searchBar/SearchBar';
+import { SearchBar } from '../../searchBar/SearchBar';
 import { IRouter, IItemProduct } from 'type';
-import { getApiDate, getApiItem } from '../../services/api';
-import { ListProduct } from '../../components/listProduct/ListProduct';
-import { ModalWindow } from '../../components/UI/modalWindow/ModalWindow';
-import { DetailedCard } from '../../components/detailedCard/DetailedCard';
-import { Loader } from '../../components/UI/loader/Loader';
+import { getApiDate, getApiItem } from '../../../services/api';
+import { ListProduct } from '../../listProduct/ListProduct';
+import { ModalWindow } from '../../UI/modalWindow/ModalWindow';
+import { DetailedCard } from '../../detailedCard/DetailedCard';
+import { Loader } from '../../UI/loader/Loader';
 
 const TIMEOUT = 500;
 
