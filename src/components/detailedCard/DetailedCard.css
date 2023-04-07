@@ -1,0 +1,27 @@
+.detailed-card {
+  background-color: #ffffff;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.detailed-card-wrapper, .detailed-card-wrapper-line {
+  padding: 10px;
+  font-size: 1rem;
+}
+.detailed-card-wrapper-line {
+  border-top: 1px solid antiquewhite;
+}
+.detailed-picture {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.detailed-title {
+  color: #f34b4b;
+}
+.detailed-title-bg {
+  background-color: antiquewhite;
+}
+.detailed-statistics {
+  display: flex;
+  justify-content: space-between;
+}

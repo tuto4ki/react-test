@@ -1,0 +1,14 @@
+.header a { 
+  padding: 15px;
+}
+.header {
+  position: relative;
+  padding: 15px 0;
+  text-align: center;
+  background-color: antiquewhite;
+}
+.header h1 {
+  position: absolute;
+  top: 7px;
+  left: 20px;
+}
