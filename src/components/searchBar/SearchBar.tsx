@@ -7,16 +7,13 @@ function SearchBar(props: { callback: { (pathSearch: string): void } }): JSX.Ele
   const [valueInput, setValueInput] = useState<string>(
     localStorage.getItem('search') ? String(localStorage.getItem('search')) : ''
   );
-  const ref = useRef<string>('');
-
   useEffect(() => {
-    ref.current = valueInput;
-  }, [valueInput]);
-
-  useEffect(() => {
-    return () => {
-      localStorage.setItem('search', ref.current);
-    };
+    console.log(valueInput);
+    if (valueInput) {
+      props.callback(`products/search?q=${valueInput}`);
+    } else {
+      props.callback('products');
+    }
   }, []);
 
   const onChange = (e: React.FormEvent<HTMLInputElement>): void => {
@@ -24,8 +21,8 @@ function SearchBar(props: { callback: { (pathSearch: string): void } }): JSX.Ele
   };
 
   const handleSubmit = async (e: ChangeEvent<HTMLFormElement>) => {
-    console.log(valueInput);
     e.preventDefault();
+    localStorage.setItem('search', valueInput);
     props.callback(`products/search?q=${valueInput}`);
   };
 

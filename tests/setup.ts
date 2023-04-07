@@ -1,11 +1,31 @@
-import { expect, afterEach } from 'vitest';
+import { expect, vi } from 'vitest';
 import { cleanup } from '@testing-library/react';
 import matchers from '@testing-library/jest-dom/matchers';
+import '@testing-library/jest-dom';
 
-// extends Vitest's expect method with methods from react-testing-library
+import fakeList from '../src/assets/json/productsListTest.json';
+
 expect.extend(matchers);
 
-// runs a cleanup after each test case (e.g. clearing jsdom)
-afterEach(() => {
+const globalFetch = global.fetch;
+
+beforeAll(() => {
+  global.fetch = vi.fn().mockImplementation((str: string) => {
+    if (str === 'https://dummyjson.com/product/1') {
+      return Promise.resolve({
+        json: () => Promise.resolve(fakeList.products[0]),
+      });
+    }
+    return Promise.resolve({
+      json: () => Promise.resolve(fakeList),
+    });
+  });
+});
+
+// afterEach(() => server.resetHandlers());
+
+afterAll(() => {
   cleanup();
+  global.fetch = globalFetch;
+  // server.close();
 });

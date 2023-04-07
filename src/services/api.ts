@@ -9,7 +9,7 @@ async function getApiDate(url: string) {
 }
 
 async function getApiItem(url: string) {
-  const data: IItemProduct = await fetch(`${BASE_URL}/${url}`).then((res) => {
+  const data: IItemProduct = await fetch(`${BASE_URL}/product/${url}`).then((res) => {
     return res.json();
   });
   return data;

@@ -15,14 +15,11 @@ function HomePage(props: IRouter): JSX.Element {
   const [isModalActive, setIsModalActive] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isDataFound, setIsDataFound] = useState<boolean>(true);
-  const [newsShow, setNewsShow] = useState<IItemProduct | null>(null);
+  const [productShow, setProductShow] = useState<IItemProduct | null>(null);
+
   useEffect(() => {
     props.callback(props.title);
   });
-
-  useEffect(() => {
-    search('products');
-  }, []);
 
   const search = (pathSearch: string) => {
     setIsLoading(true);
@@ -45,12 +42,12 @@ function HomePage(props: IRouter): JSX.Element {
     }, TIMEOUT);
   };
 
-  const showDetailedNews = (product: IItemProduct) => {
+  const showDetailedProduct = (product: IItemProduct) => {
     setIsLoading(true);
     setTimeout(() => {
       try {
-        getApiItem(`product/${product.id}`).then((item) => {
-          setNewsShow(item);
+        getApiItem(`${product.id}`).then((item) => {
+          setProductShow(item);
           setIsModalActive(true);
         });
       } catch (error) {
@@ -66,14 +63,14 @@ function HomePage(props: IRouter): JSX.Element {
     <>
       <h2>Home page</h2>
       <SearchBar callback={search} />
-      {isLoading ? <Loader /> : ''}
+      {isLoading && <Loader />}
       {isDataFound ? (
-        <ListProduct data={listCard} newsShow={showDetailedNews} />
+        <ListProduct data={listCard} callback={showDetailedProduct} />
       ) : (
         'Product not found'
       )}
       <ModalWindow active={isModalActive} setActive={setIsModalActive}>
-        <DetailedCard product={newsShow} />
+        <DetailedCard product={productShow} />
       </ModalWindow>
     </>
   );

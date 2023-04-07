@@ -4,15 +4,15 @@ import './ListProduct.css';
 
 interface IPropsListNews {
   data: Array<IItemProduct>;
-  newsShow: (news: IItemProduct) => void;
+  callback: (product: IItemProduct) => void;
 }
 
 function ListProduct(props: IPropsListNews) {
-  const { data, newsShow } = props;
+  const { data, callback } = props;
   return (
     <section className="cards">
       {data.map((item) => (
-        <ItemProduct item={item} onClick={newsShow} key={item.id} />
+        <ItemProduct item={item} onClick={callback} key={item.id} />
       ))}
     </section>
   );
