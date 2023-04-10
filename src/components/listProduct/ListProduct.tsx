@@ -1,6 +1,6 @@
 import { IItemProduct } from '../../type';
 import { ItemProduct } from '../itemProduct/ItemProduct';
-import './ListProduct.css';
+import './ListProduct.scss';
 
 interface IPropsListProduct {
   data: Array<IItemProduct>;

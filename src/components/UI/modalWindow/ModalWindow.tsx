@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './ModalWindow.css';
+import './ModalWindow.scss';
 
 interface IPropsModalWindow {
   active: boolean;

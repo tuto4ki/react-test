@@ -15,7 +15,7 @@ import {
 } from '../UI';
 import typeRoomJSON from '../../assets/json/typeRoom.json';
 import errorMessageJSON from '../../assets/json/errorMessage.json';
-import './CreateCardForm.css';
+import './CreateCardForm.scss';
 
 const TIMEOUT = 2000;
 

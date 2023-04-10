@@ -1,5 +1,5 @@
 import { IItemProduct } from 'type';
-import './DetailedCard.css';
+import './DetailedCard.scss';
 
 interface IPropsDetailedCard {
   product: IItemProduct | null;

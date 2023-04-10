@@ -12,6 +12,7 @@
     "test": "vitest --coverage"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.3",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "msw": "^1.2.1",
@@ -43,6 +44,7 @@
     "jsdom": "^21.1.1",
     "lint-staged": "^12.4.1",
     "prettier": "^2.6.2",
+    "sass": "^1.61.0",
     "typescript": "^4.9.3",
     "vite": "^4.1.0",
     "vite-plugin-eslint": "^1.8.1",

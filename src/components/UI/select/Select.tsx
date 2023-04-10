@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TSelectProps } from 'type';
 import { Option } from '../option/Option';
-import './Select.css';
+import './Select.scss';
 
 export const Select = React.forwardRef<HTMLSelectElement, TSelectProps>(
   ({ options, ...props }, ref) => (

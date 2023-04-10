@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 
 import { IStatePage } from 'type';
-import './Header.css';
+import './Header.scss';
 
 const setActive = ({ isActive }: { isActive: boolean }) => (isActive ? 'active-link' : '');
 

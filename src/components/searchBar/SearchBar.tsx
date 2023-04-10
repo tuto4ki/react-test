@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 
 import { Input } from '../UI/input/Input';
-import './SearchBar.css';
+import './SearchBar.scss';
 
 function SearchBar(props: { callback: { (pathSearch: string): void } }): JSX.Element {
   const { callback } = props;

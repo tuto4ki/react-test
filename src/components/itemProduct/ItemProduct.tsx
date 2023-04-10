@@ -1,5 +1,5 @@
 import { IItemProduct } from 'type';
-import './ItemProduct.css';
+import './ItemProduct.scss';
 
 interface IPropsItemProduct {
   item: IItemProduct;

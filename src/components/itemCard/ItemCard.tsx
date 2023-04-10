@@ -1,5 +1,5 @@
 import { IItemCard } from 'type';
-import './ItemCard.css';
+import './ItemCard.scss';
 import '../../assets/images/iconHeart.svg';
 
 function ItemCard(props: IItemCard): JSX.Element {

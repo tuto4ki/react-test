@@ -1,6 +1,6 @@
 import { ItemCard } from '../itemCard/ItemCard';
 import { IItemCard } from '../../type';
-import './ListCard.css';
+import './ListCard.scss';
 
 function ListCard(props: { data: Array<IItemCard> }) {
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { TInputProps } from 'type';
-import './InputFile.css';
+import './InputFile.scss';
 
 export const InputFile = React.forwardRef<HTMLInputElement, TInputProps>((props, ref) => (
   <input

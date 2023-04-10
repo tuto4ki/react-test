@@ -1,4 +1,4 @@
-import './Loader.css';
+import './Loader.scss';
 
 export function Loader(): JSX.Element {
   return (

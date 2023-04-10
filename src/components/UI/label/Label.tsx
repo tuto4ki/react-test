@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './Label.css';
+import './Label.scss';
 
 interface IMyLabelProps {
   htmlFor: string;
