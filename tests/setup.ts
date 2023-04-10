@@ -7,10 +7,10 @@ import fakeList from '../src/assets/json/productsListTest.json';
 
 expect.extend(matchers);
 
-const globalFetch = global.fetch;
+const globalFetch = window.fetch;
 
 beforeAll(() => {
-  global.fetch = vi.fn().mockImplementation((str: string) => {
+  window.fetch = vi.fn().mockImplementation((str: string) => {
     if (str === 'https://dummyjson.com/product/1') {
       return Promise.resolve({
         json: () => Promise.resolve(fakeList.products[0]),
@@ -24,5 +24,5 @@ beforeAll(() => {
 
 afterAll(() => {
   cleanup();
-  global.fetch = globalFetch;
+  window.fetch = globalFetch;
 });
