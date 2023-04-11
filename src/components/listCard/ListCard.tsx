@@ -1,12 +1,13 @@
 import { ItemCard } from '../itemCard/ItemCard';
-import { IItemCard } from '../../type';
+import { useAppSelector } from '../../hook';
 import './ListCard.scss';
 
-function ListCard(props: { data: Array<IItemCard> }) {
+function ListCard() {
+  const listCard = useAppSelector((state) => state.listCard.list);
   return (
     <section className="cards">
-      {props.data.map((item) => (
-        <ItemCard {...item} key={item.id} />
+      {listCard.map((item, key) => (
+        <ItemCard {...item} key={key} />
       ))}
     </section>
   );
