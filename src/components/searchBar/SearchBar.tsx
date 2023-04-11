@@ -2,12 +2,14 @@ import React, { ChangeEvent, useEffect, useState } from 'react';
 
 import { Input } from '../UI/input/Input';
 import './SearchBar.scss';
+import { useAppDispatch, useAppSelector } from '../../hook';
+import { changeSearchInput } from '../../store/searchInputSlice';
 
 function SearchBar(props: { callback: { (pathSearch: string): void } }): JSX.Element {
   const { callback } = props;
-  const [valueInput, setValueInput] = useState<string>(
-    localStorage.getItem('search') ? String(localStorage.getItem('search')) : ''
-  );
+  const valueSelector = useAppSelector((state) => state.searchInput);
+  const [valueInput, setValueInput] = useState<string>(valueSelector.value);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     callback(valueInput);
@@ -20,8 +22,7 @@ function SearchBar(props: { callback: { (pathSearch: string): void } }): JSX.Ele
 
   const handleSubmit = async (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    localStorage.setItem('search', valueInput);
-    callback(valueInput);
+    dispatch(changeSearchInput(valueInput));
   };
 
   return (

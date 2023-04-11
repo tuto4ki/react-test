@@ -5,7 +5,7 @@ import dataCard from '../../assets/json/card.json';
 
 describe('renders component', () => {
   it('render list', () => {
-    render(<ListCard data={dataCard.products} />);
+    render(<ListCard />);
     expect(screen.getAllByTestId('item-card').length).toEqual(dataCard.products.length);
   });
 });
