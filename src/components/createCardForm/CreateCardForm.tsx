@@ -16,10 +16,12 @@ import {
 import typeRoomJSON from '../../assets/json/typeRoom.json';
 import errorMessageJSON from '../../assets/json/errorMessage.json';
 import './CreateCardForm.scss';
+import { addListCard } from '../../store/listCardSlice';
+import { useAppDispatch } from '../../hook';
 
 const TIMEOUT = 2000;
 
-function CreateCardForm(props: IFormCallback): JSX.Element {
+function CreateCardForm(): JSX.Element {
   const [isModalWindow, setIsModalWindow] = useState(false);
   const {
     register,
@@ -30,17 +32,20 @@ function CreateCardForm(props: IFormCallback): JSX.Element {
     mode: 'onSubmit',
     reValidateMode: 'onSubmit',
   });
+  const dispatch = useAppDispatch();
   const onSubmit = handleSubmit((data) => {
-    props.callback({
-      name: data.name,
-      date: data.date,
-      description: data.description,
-      price: data.price,
-      typeRoom: data.typeRoom,
-      inputAgree: data.agree,
-      likes: +data.likes,
-      thumbnail: URL.createObjectURL(data.file[0]),
-    });
+    dispatch(
+      addListCard({
+        name: data.name,
+        date: data.date,
+        description: data.description,
+        price: data.price,
+        typeRoom: data.typeRoom,
+        inputAgree: data.agree,
+        likes: +data.likes,
+        thumbnail: URL.createObjectURL(data.file[0]),
+      })
+    );
     setIsModalWindow(true);
     setTimeout(() => setIsModalWindow(false), TIMEOUT);
     reset();

@@ -1,30 +1,34 @@
-import { IItemProduct } from 'type';
 import './DetailedCard.scss';
+import { useGetProductQuery } from '../../store/productsApi';
+import { Loader } from '../../components/UI/loader/Loader';
 
 interface IPropsDetailedCard {
-  product: IItemProduct | null;
+  id: number;
 }
 
-function DetailedCard(props: IPropsDetailedCard): JSX.Element {
-  if (props.product) {
-    const { product } = props;
+function DetailedCard({ id }: IPropsDetailedCard): JSX.Element {
+  const { data, isLoading } = useGetProductQuery(String(id));
+  if (isLoading) {
+    return <Loader />;
+  }
+  if (data) {
     return (
       <div className="detailed-card">
-        <img src={product.thumbnail} alt={product.title} className="detailed-picture" />
+        <img src={data.thumbnail} alt={data.title} className="detailed-picture" />
         <div className="detailed-card-wrapper detailed-title-bg">
-          <h4 className="detailed-title">{product.title}</h4>
-          <p className="price">${product.price}</p>
+          <h4 className="detailed-title">{data.title}</h4>
+          <p className="price">${data.price}</p>
         </div>
-        <div className="detailed-card-wrapper">{product.description}</div>
+        <div className="detailed-card-wrapper">{data.description}</div>
         <div className="detailed-card-wrapper-line">
-          <p>Brand: {product.brand}</p>
-          <p>Category: {product.category}</p>
+          <p>Brand: {data.brand}</p>
+          <p>Category: {data.category}</p>
         </div>
         <div className="detailed-card-wrapper-line detailed-statistics">
           <span className="icon-heart" role="role-likes">
-            {product.rating}
+            {data.rating}
           </span>
-          <span className="item-card-stock">Stock: {product.stock}</span>
+          <span className="item-card-stock">Stock: {data.stock}</span>
         </div>
       </div>
     );

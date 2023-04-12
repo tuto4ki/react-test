@@ -1,17 +1,20 @@
+import { useGetAllProductsQuery } from '../../store/productsApi';
+import { useAppSelector } from '../../hook';
 import { IItemProduct } from '../../type';
 import { ItemProduct } from '../itemProduct/ItemProduct';
 import './ListProduct.scss';
 
 interface IPropsListProduct {
-  data: Array<IItemProduct>;
   callback: (product: IItemProduct) => void;
 }
 
 function ListProduct(props: IPropsListProduct) {
-  const { data, callback } = props;
+  const valueSearch = useAppSelector((state) => state.searchInput);
+  const { data } = useGetAllProductsQuery(valueSearch.value);
+  const { callback } = props;
   return (
     <section className="cards">
-      {data.map((item) => (
+      {data.products.map((item: IItemProduct) => (
         <ItemProduct item={item} onClick={callback} key={item.id} />
       ))}
     </section>

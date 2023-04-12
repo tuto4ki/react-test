@@ -1,12 +1,10 @@
 import { CreateCardForm } from './CreateCardForm';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { vi } from 'vitest';
 
 describe('Form component', () => {
   it('render form', () => {
-    const handlerFunc = vi.fn();
-    const container = render(<CreateCardForm callback={handlerFunc} />);
+    const container = render(<CreateCardForm />);
     const name = container.queryByPlaceholderText(/name/);
     expect(name).toBeDefined();
     if (name) {
