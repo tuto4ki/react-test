@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { IFormCallback, TFormValues } from '../../type';
+import { TFormValues } from '../../type';
 import {
   Label,
   Button,
