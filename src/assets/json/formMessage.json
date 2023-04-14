@@ -1,0 +1,13 @@
+{
+  "name": "Name Project:",
+  "price": "Price:",
+  "description": "Description:",
+  "date": "Date:",
+  "typeRoom": "Type room:",
+  "agree": "I consent to the use of my resources",
+  "likes": "Show number of likes",
+  "likesNo": "No",
+  "likesYes": "Yes",
+  "file": "Upload file:",
+  "submit": "Submit"
+}
