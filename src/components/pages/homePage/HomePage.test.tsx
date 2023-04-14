@@ -1,18 +1,33 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { HomePage } from './HomePage';
+import { renderWithProviders } from '../../../../tests/utils/testUtils';
+import productSearchJSON from '../../../assets/json/productSearchTest.json';
 
 describe('Product list', () => {
-  it('List fetch and display', async () => {
-    const { findByText } = render(<HomePage title="Home page" callback={() => {}} />);
+  it('Products list show', async () => {
+    const { findByText } = renderWithProviders(<HomePage title="Home page" callback={() => {}} />);
+    expect(await findByText(/Home page/i)).toBeInTheDocument();
     expect(await findByText('iPhone 9')).toBeInTheDocument();
   });
-
-  it('Product fetch and display', async () => {
-    const { findByText } = render(<HomePage title="Home page" callback={() => {}} />);
+  it('A product show', async () => {
+    const { findByText } = renderWithProviders(<HomePage title="Home page" callback={() => {}} />);
     const div = await screen.findAllByTestId('item-card-product');
     await userEvent.click(div[0]);
     expect(await findByText('An apple mobile which is nothing like apple')).toBeInTheDocument();
+  });
+  it('Product search', async () => {
+    const { findAllByTestId } = renderWithProviders(
+      <HomePage title="Home page" callback={() => {}} />,
+      {
+        preloadedState: {
+          searchInput: {
+            value: 'phone',
+          },
+        },
+      }
+    );
+    expect((await findAllByTestId('item-card-product')).length).toEqual(productSearchJSON.total);
   });
 });

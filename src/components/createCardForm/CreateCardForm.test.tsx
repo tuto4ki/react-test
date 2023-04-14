@@ -1,10 +1,11 @@
-import { CreateCardForm } from './CreateCardForm';
-import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
+import { CreateCardForm } from './CreateCardForm';
+import { renderWithProviders } from '../../../tests/utils/testUtils';
 
 describe('Form component', () => {
   it('render form', () => {
-    const container = render(<CreateCardForm />);
+    const container = renderWithProviders(<CreateCardForm />);
     const name = container.queryByPlaceholderText(/name/);
     expect(name).toBeDefined();
     if (name) {

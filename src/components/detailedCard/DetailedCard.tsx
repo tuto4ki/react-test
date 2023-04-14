@@ -1,6 +1,6 @@
-import './DetailedCard.scss';
 import { useGetProductQuery } from '../../store/productsApi';
 import { Loader } from '../../components/UI/loader/Loader';
+import './DetailedCard.scss';
 
 interface IPropsDetailedCard {
   id: number;

@@ -15,6 +15,7 @@ import {
 } from '../UI';
 import typeRoomJSON from '../../assets/json/typeRoom.json';
 import errorMessageJSON from '../../assets/json/errorMessage.json';
+import titleFormJSON from '../../assets/json/formMessage.json';
 import './CreateCardForm.scss';
 import { addListCard } from '../../store/listCardSlice';
 import { useAppDispatch } from '../../hook';
@@ -55,39 +56,39 @@ function CreateCardForm(): JSX.Element {
     <>
       {isModalWindow && <div className="message-modal">Card added</div>}
       <form name="form" className="container_search" onSubmit={onSubmit}>
-        <Label htmlFor="name">Name Project:</Label>
+        <Label htmlFor="name">{titleFormJSON.name}</Label>
         <div>
           <InputText
             {...register('name', {
               required: errorMessageJSON.name.custom,
               minLength: {
-                value: 2,
-                message: errorMessageJSON.name.minLength,
+                value: errorMessageJSON.name.minLength,
+                message: errorMessageJSON.name.minLengthMessage,
               },
               pattern: {
-                value: /^[A-Z]{1}[a-zA-Z]{1,24}$/,
+                value: RegExp(errorMessageJSON.name.patter),
                 message: errorMessageJSON.name.custom,
               },
               maxLength: {
-                value: 25,
-                message: errorMessageJSON.name.minLength,
+                value: errorMessageJSON.name.maxLength,
+                message: errorMessageJSON.name.maxLengthMessage,
               },
             })}
             name="name"
           />
           {errors?.name && <p className="message-error">{errors.name.message}</p>}
         </div>
-        <Label htmlFor="price">Price:</Label>
+        <Label htmlFor="price">{titleFormJSON.price}</Label>
         <div>
           <InputText
             {...register('price', {
               required: errorMessageJSON.price.custom,
               minLength: {
-                value: 1,
+                value: errorMessageJSON.price.minLength,
                 message: errorMessageJSON.price.custom,
               },
               pattern: {
-                value: /^[1-9][0-9]{0,9}$/,
+                value: RegExp(errorMessageJSON.price.pattern),
                 message: errorMessageJSON.price.custom,
               },
             })}
@@ -95,41 +96,41 @@ function CreateCardForm(): JSX.Element {
           />
           {errors?.price && <p className="message-error">{errors.price.message}</p>}
         </div>
-        <Label htmlFor="description">Description:</Label>
+        <Label htmlFor="description">{titleFormJSON.description}</Label>
         <div>
           <Textarea
             {...register('description', {
               required: errorMessageJSON.description.custom,
               minLength: {
-                value: 5,
-                message: errorMessageJSON.description.minLength,
+                value: errorMessageJSON.description.minLength,
+                message: errorMessageJSON.description.minLengthMessage,
               },
               maxLength: {
-                value: 100,
-                message: errorMessageJSON.description.maxLength,
+                value: errorMessageJSON.description.maxLength,
+                message: errorMessageJSON.description.maxLengthMessage,
               },
             })}
             name="description"
           />
           {errors?.description && <p className="message-error">{errors.description.message}</p>}
         </div>
-        <Label htmlFor="date">Date:</Label>
+        <Label htmlFor="date">{titleFormJSON.date}</Label>
         <div>
           <InputDate
             {...register('date', {
-              required: 'Choose date',
+              required: errorMessageJSON.date.custom,
             })}
             name="date"
           />
           {errors?.date && <p className="message-error">{errors.date.message}</p>}
         </div>
-        <Label htmlFor="selectRoom">Type room:</Label>
+        <Label htmlFor="selectRoom">{titleFormJSON.typeRoom}</Label>
         <div>
           <Select
             {...register('typeRoom', {
               required: errorMessageJSON.typeRoom.custom,
               minLength: {
-                value: 3,
+                value: errorMessageJSON.typeRoom.minLength,
                 message: errorMessageJSON.typeRoom.custom,
               },
             })}
@@ -139,7 +140,7 @@ function CreateCardForm(): JSX.Element {
           />
           {errors?.typeRoom && <p className="message-error">{errors.typeRoom.message}</p>}
         </div>
-        <Label htmlFor="agree">I consent to the use of my resources</Label>
+        <Label htmlFor="agree">{titleFormJSON.agree}</Label>
         <div>
           <InputCheckbox
             {...register('agree', {
@@ -149,9 +150,9 @@ function CreateCardForm(): JSX.Element {
           />
           {errors?.agree && <p className="message-error">{errors.agree.message}</p>}
         </div>
-        <Label htmlFor="likes">Show number of likes</Label>
+        <Label htmlFor="likes">{titleFormJSON.likes}</Label>
         <div>
-          <Label htmlFor="radioYes">Yes</Label>
+          <Label htmlFor="radioYes">{titleFormJSON.likesYes}</Label>
           <InputRadio
             {...register('likes', {
               required: errorMessageJSON.likes.custom,
@@ -160,7 +161,7 @@ function CreateCardForm(): JSX.Element {
             id="radioYes"
             value="0"
           />
-          <Label htmlFor="radioNo">No</Label>
+          <Label htmlFor="radioNo">{titleFormJSON.likesNo}</Label>
           <InputRadio
             {...register('likes', {
               required: errorMessageJSON.likes.custom,
@@ -173,7 +174,7 @@ function CreateCardForm(): JSX.Element {
             <p className="message-error">{errors?.likes.message}</p>
           )}
         </div>
-        <Label htmlFor="file">Upload file:</Label>
+        <Label htmlFor="file">{titleFormJSON.file}</Label>
         <div>
           <InputFile
             {...register('file', {
@@ -184,7 +185,7 @@ function CreateCardForm(): JSX.Element {
           {errors?.file && <p className="message-error">{errors.file.message}</p>}
         </div>
         <div className="button-center">
-          <Button>Submit</Button>
+          <Button>{titleFormJSON.submit}</Button>
         </div>
       </form>
     </>

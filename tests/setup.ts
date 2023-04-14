@@ -1,28 +1,13 @@
-import { expect, vi } from 'vitest';
-import { cleanup } from '@testing-library/react';
-import matchers from '@testing-library/jest-dom/matchers';
 import '@testing-library/jest-dom';
+import { cleanup } from '@testing-library/react';
 
-import fakeList from '../src/assets/json/productsListTest.json';
+import { server } from './mocks/server';
 
-expect.extend(matchers);
+beforeAll(() => server.listen());
 
-const globalFetch = window.fetch;
-
-beforeAll(() => {
-  window.fetch = vi.fn().mockImplementation((str: string) => {
-    if (str === 'https://dummyjson.com/product/1') {
-      return Promise.resolve({
-        json: () => Promise.resolve(fakeList.products[0]),
-      });
-    }
-    return Promise.resolve({
-      json: () => Promise.resolve(fakeList),
-    });
-  });
-});
+afterEach(() => server.resetHandlers());
 
 afterAll(() => {
   cleanup();
-  window.fetch = globalFetch;
+  server.close();
 });

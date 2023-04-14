@@ -1,19 +1,24 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import type { PreloadedState } from '@reduxjs/toolkit';
 
 import listCardReducer from './listCardSlice';
 import searchInputReducer from './searchInputSlice';
 import { productsApi } from './productsApi';
 
-const store = configureStore({
-  reducer: {
-    listCard: listCardReducer,
-    searchInput: searchInputReducer,
-    [productsApi.reducerPath]: productsApi.reducer,
-  },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(productsApi.middleware),
+const rootReducer = combineReducers({
+  listCard: listCardReducer,
+  searchInput: searchInputReducer,
+  [productsApi.reducerPath]: productsApi.reducer,
 });
 
-export default store;
+export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
+  return configureStore({
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(productsApi.middleware),
+    preloadedState,
+  });
+};
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof rootReducer>;
+export type AppStore = ReturnType<typeof setupStore>;
+export type AppDispatch = AppStore['dispatch'];

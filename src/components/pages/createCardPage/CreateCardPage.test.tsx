@@ -1,11 +1,11 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 
 import { CreateCardPage } from './CreateCardPage';
+import { renderWithProviders } from '../../../../tests/utils/testUtils';
 
 describe('renders component', () => {
   test('render createPage', () => {
-    const page = { title: 'Create card', callback: () => {} };
-    render(<CreateCardPage {...page} />);
+    renderWithProviders(<CreateCardPage title="Create card" callback={() => {}} />);
     expect(screen.getByText(/Create card/i)).toBeInTheDocument();
   });
 });

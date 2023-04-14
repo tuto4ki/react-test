@@ -1,11 +1,16 @@
-import { render, screen } from '@testing-library/react';
-
 import { ListCard } from './ListCard';
-import dataCard from '../../assets/json/card.json';
+import { renderWithProviders } from '../../../tests/utils/testUtils';
+import listCardsJSON from '../../assets/json/card.json';
 
 describe('renders component', () => {
-  it('render list', () => {
-    render(<ListCard />);
-    expect(screen.getAllByTestId('item-card').length).toEqual(dataCard.products.length);
+  it('render list', async () => {
+    const { getAllByTestId } = renderWithProviders(<ListCard />, {
+      preloadedState: {
+        listCard: {
+          list: listCardsJSON.products,
+        },
+      },
+    });
+    expect(getAllByTestId('item-card').length).toEqual(listCardsJSON.products.length);
   });
 });
