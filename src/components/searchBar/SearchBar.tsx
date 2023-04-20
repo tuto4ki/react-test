@@ -4,6 +4,7 @@ import { Input } from '../UI/input/Input';
 import './SearchBar.scss';
 import { useAppDispatch, useAppSelector } from '../../hook';
 import { changeSearchInput } from '../../store/searchInputSlice';
+import { fetchProducts } from '../../store/listProductsSlice';
 
 function SearchBar(): JSX.Element {
   const valueSelector = useAppSelector((state) => state.searchInput);
@@ -17,6 +18,7 @@ function SearchBar(): JSX.Element {
   const handleSubmit = async (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(changeSearchInput(valueInput));
+    dispatch(fetchProducts(valueInput));
   };
 
   return (

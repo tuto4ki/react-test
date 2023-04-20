@@ -3,22 +3,19 @@ import type { PreloadedState } from '@reduxjs/toolkit';
 
 import listCardReducer from './listCardSlice';
 import searchInputReducer from './searchInputSlice';
-import { productsApi } from './productsApi';
+import listProductsSlice from './listProductsSlice';
+import productSlice from './productSlice';
 
 const rootReducer = combineReducers({
   listCard: listCardReducer,
   searchInput: searchInputReducer,
-  [productsApi.reducerPath]: productsApi.reducer,
+  listProduct: listProductsSlice,
+  product: productSlice,
 });
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
   return configureStore({
     reducer: rootReducer,
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({
-        immutableCheck: false,
-        serializableCheck: false,
-      }).concat(productsApi.middleware),
     preloadedState,
   });
 };

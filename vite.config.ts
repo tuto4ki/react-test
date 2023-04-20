@@ -1,4 +1,4 @@
-import react from '@vitejs/plugin-react'
+import react from '@vitejs/plugin-react';
 import eslintPlugin from 'vite-plugin-eslint';
 import { defineConfig } from 'vite';
 import { configDefaults, UserConfig as VitestUserConfigInterface } from 'vitest/config';
@@ -13,10 +13,10 @@ const vitestConfig: VitestUserConfigInterface = {
       provider: 'c8',
       all: true,
     },
-  }
+  },
 };
 
 export default defineConfig({
   plugins: [eslintPlugin(), react()],
-  test: vitestConfig.test
+  test: vitestConfig.test,
 });

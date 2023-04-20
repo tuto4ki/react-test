@@ -1,8 +1,8 @@
-import { useGetAllProductsQuery } from '../../store/productsApi';
 import { useAppSelector } from '../../hook';
 import { IItemProduct } from '../../type';
 import { ItemProduct } from '../itemProduct/ItemProduct';
 import { Loader } from '../../components/UI/loader/Loader';
+import { STATUS_REQUEST } from '../../store/type';
 import './ListProduct.scss';
 
 interface IPropsListProduct {
@@ -10,19 +10,18 @@ interface IPropsListProduct {
 }
 
 function ListProduct({ callback }: IPropsListProduct) {
-  const valueSearch = useAppSelector((state) => state.searchInput);
-  const { data, isFetching } = useGetAllProductsQuery(valueSearch.value);
+  const { status, products } = useAppSelector((state) => state.listProduct);
   return (
     <>
-      {isFetching && <Loader />}
-      {data?.products.length ? (
+      {status === STATUS_REQUEST.loading && <Loader />}
+      {products.length ? (
         <section className="cards">
-          {data.products.map((item: IItemProduct) => (
+          {products.map((item: IItemProduct) => (
             <ItemProduct item={item} onClick={callback} key={item.id} />
           ))}
         </section>
       ) : (
-        !isFetching && 'Product not found'
+        status === STATUS_REQUEST.resolved && 'Product not found'
       )}
     </>
   );

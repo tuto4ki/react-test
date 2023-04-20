@@ -63,3 +63,10 @@ export type TFormValues = {
   likes: number;
   file: FileList;
 };
+
+export interface IProductsListAPI {
+  limit: number;
+  products: IItemProduct[];
+  skip: number;
+  total: number;
+}
