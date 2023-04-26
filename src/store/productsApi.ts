@@ -1,3 +1,4 @@
+/*
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { URL_API } from './settingsApi';
@@ -18,3 +19,4 @@ export const productsApi = createApi({
 });
 
 export const { useGetAllProductsQuery, useGetProductQuery } = productsApi;
+*/

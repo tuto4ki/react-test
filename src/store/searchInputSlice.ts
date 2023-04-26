@@ -1,10 +1,16 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import * as toolkitRaw from '@reduxjs/toolkit';
+const { createSlice } = (toolkitRaw as any).default ?? toolkitRaw; // eslint-disable-line
+import type { PayloadAction } from '@reduxjs/toolkit';
+
+type TStateSearchInputSlice = {
+  value: string;
+};
 
 const searchInputSlice = createSlice({
   name: 'form',
   initialState: { value: '' },
   reducers: {
-    changeSearchInput(state, action: PayloadAction<string>) {
+    changeSearchInput(state: TStateSearchInputSlice, action: PayloadAction<string>) {
       state.value = action.payload;
     },
   },

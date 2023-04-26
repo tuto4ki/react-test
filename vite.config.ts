@@ -1,6 +1,7 @@
 import react from '@vitejs/plugin-react';
 import eslintPlugin from 'vite-plugin-eslint';
 import { defineConfig } from 'vite';
+import path from 'path';
 import { configDefaults, UserConfig as VitestUserConfigInterface } from 'vitest/config';
 
 const vitestConfig: VitestUserConfigInterface = {
@@ -19,4 +20,7 @@ const vitestConfig: VitestUserConfigInterface = {
 export default defineConfig({
   plugins: [eslintPlugin(), react()],
   test: vitestConfig.test,
+  server: {
+    origin: 'http://127.0.0.1:3001',
+  },
 });

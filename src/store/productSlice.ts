@@ -1,4 +1,6 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import * as toolkitRaw from '@reduxjs/toolkit';
+const { createSlice, createAsyncThunk } = (toolkitRaw as any).default ?? toolkitRaw; // eslint-disable-line
+import type { PayloadAction, ActionReducerMapBuilder } from '@reduxjs/toolkit';
 
 import { URL_API } from './settingsApi';
 import { STATUS_REQUEST } from './type';
@@ -12,6 +14,12 @@ export const fetchProduct = createAsyncThunk('product/fetchProduct', async funct
 
   return (await response.json()) as IItemProduct;
 });
+
+type TStateProductSlice = {
+  product: IItemProduct;
+  status: STATUS_REQUEST;
+  error: string;
+};
 
 const initialProduct: IItemProduct = {
   id: 0,
@@ -35,17 +43,20 @@ const productSlice = createSlice({
     error: '',
   },
   reducers: {},
-  extraReducers: (builder) => {
-    builder.addCase(fetchProduct.pending, (state) => {
+  extraReducers: (builder: ActionReducerMapBuilder<TStateProductSlice>) => {
+    builder.addCase(fetchProduct.pending, (state: TStateProductSlice) => {
       state.status = STATUS_REQUEST.loading;
       state.error = '';
     });
-    builder.addCase(fetchProduct.fulfilled, (state, action) => {
-      state.status = STATUS_REQUEST.resolved;
-      if (action.payload) {
-        state.product = action.payload;
+    builder.addCase(
+      fetchProduct.fulfilled,
+      (state: TStateProductSlice, action: PayloadAction<IItemProduct>) => {
+        state.status = STATUS_REQUEST.resolved;
+        if (action.payload) {
+          state.product = action.payload;
+        }
       }
-    });
+    );
   },
 });
 

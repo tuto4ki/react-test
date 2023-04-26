@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-
 import { HomePage, AboutPage, CreateCardPage, NotFoundPage } from './components/pages/index';
 import { Layout } from './components/layout/Layout';
 import { Header } from './components/header/Header';
 import { useAppDispatch, useAppSelector } from './hook';
 import { fetchProducts } from './store/listProductsSlice';
+
+import './index.scss';
 
 function App() {
   const changeTitle = (title2: string) => {
@@ -18,7 +19,6 @@ function App() {
   useEffect(() => {
     dispatch(fetchProducts(valueSearch.value));
   }, [dispatch, valueSearch.value]);
-
   return (
     <>
       <Header title={title} />
@@ -36,5 +36,13 @@ function App() {
     </>
   );
 }
-
+/*
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+  <Provider store={setupStore()}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>
+);
+*/
 export default App;

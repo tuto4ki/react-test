@@ -1,4 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import * as toolkitRaw from '@reduxjs/toolkit';
+const { createSlice } = (toolkitRaw as any).default ?? toolkitRaw; // eslint-disable-line
+import type { PayloadAction } from '@reduxjs/toolkit';
 
 import { IItemCard } from '../type';
 
@@ -14,7 +16,7 @@ const listCardSlice = createSlice({
   name: 'form',
   initialState,
   reducers: {
-    addListCard(state, action: PayloadAction<IItemCard>) {
+    addListCard(state: IItemCardState, action: PayloadAction<IItemCard>) {
       state.list.push({
         id: action.payload.id,
         view: 0,
