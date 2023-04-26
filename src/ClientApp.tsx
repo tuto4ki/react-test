@@ -12,12 +12,9 @@ declare global {
   }
 }
 
-const store = setupStore(window.__PRELOADED_STATE__);
-// delete window.__PRELOADED_STATE__;
-
 hydrateRoot(
   document.getElementById('root') as HTMLElement,
-  <Provider store={store}>
+  <Provider store={setupStore(window.__PRELOADED_STATE__)}>
     <BrowserRouter>
       <App />
     </BrowserRouter>

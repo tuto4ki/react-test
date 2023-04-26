@@ -10,7 +10,7 @@ const vitestConfig: VitestUserConfigInterface = {
     environment: 'jsdom',
     setupFiles: './tests/setup.ts',
     coverage: {
-      exclude: [...configDefaults.coverage.exclude, 'src/main.tsx', 'src/type.tsx'],
+      exclude: [...configDefaults.coverage.exclude, 'server.tsx', 'src/type.tsx'],
       provider: 'c8',
       all: true,
     },

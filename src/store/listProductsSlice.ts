@@ -12,18 +12,17 @@ type TStateListProductsSlice = {
   error: string;
 };
 
-export const fetchProducts = createAsyncThunk(
-  'products/fetchProducts',
-  async function (search?: string) {
-    let strUrl = `${URL_API}/products`;
-    if (search) {
-      strUrl += `/search?q=${search}`;
-    }
-    const response = await fetch(strUrl);
-
-    return (await response.json()) as IProductsListAPI;
+export async function getProductsFetch(search?: string) {
+  let strUrl = `${URL_API}/products`;
+  if (search) {
+    strUrl += `/search?q=${search}`;
   }
-);
+  const response = await fetch(strUrl);
+
+  return (await response.json()) as IProductsListAPI;
+}
+
+export const fetchProducts = createAsyncThunk('products/fetchProducts', getProductsFetch);
 
 const listProductsSlice = createSlice({
   name: 'products',

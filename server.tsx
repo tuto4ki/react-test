@@ -5,7 +5,7 @@ import Express from 'express';
 import { createServer as createViteServer } from 'vite';
 
 import { setupStore } from './src/store/store';
-import { URL_API } from './src/store/settingsApi';
+import { getProductsFetch } from './src/store/listProductsSlice';
 
 const PORT = process.env.PORT || 3001;
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -27,8 +27,7 @@ app.use('*', async (req, res, next) => {
   const url = req.originalUrl;
   html = await vite.transformIndexHtml(url, html);
   try {
-    const initialState = await fetch(`${URL_API}/products`);
-    const productList = await initialState.json();
+    const productList = await getProductsFetch();
     const store = setupStore({ listProduct: productList, searchInput: { value: '' } });
     const preloadedState = store.getState();
     html = html.replace(
