@@ -9,7 +9,7 @@ function DetailedCard(): JSX.Element {
     <>
       {status === STATUS_REQUEST.loading && <Loader />}
       {status === STATUS_REQUEST.resolved && product ? (
-        <div className="detailed-card">
+        <div className="detailed-card" data-testid="detailed-card">
           <img src={product.thumbnail} alt={product.title} className="detailed-picture" />
           <div className="detailed-card-wrapper detailed-title-bg">
             <h4 className="detailed-title">{product.title}</h4>
