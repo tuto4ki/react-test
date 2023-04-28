@@ -3,6 +3,7 @@ import { IItemProduct } from '../../type';
 import { ItemProduct } from '../itemProduct/ItemProduct';
 import { Loader } from '../../components/UI/loader/Loader';
 import { STATUS_REQUEST } from '../../store/type';
+
 import './ListProduct.scss';
 
 interface IPropsListProduct {

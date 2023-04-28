@@ -7,6 +7,8 @@ import { createServer as createViteServer } from 'vite';
 import { setupStore } from './src/store/store';
 import { getProductsFetch } from './src/store/listProductsSlice';
 
+const STATUS_CODE = 200;
+
 const PORT = process.env.PORT || 3001;
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -49,7 +51,7 @@ app.use('*', async (req, res, next) => {
         },
         onAllReady() {
           res.write(parts[1]);
-          res.status(200).end();
+          res.status(STATUS_CODE).end();
         },
       }
     );

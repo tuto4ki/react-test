@@ -1,6 +1,7 @@
 import { useAppSelector } from '../../hook';
 import { Loader } from '../../components/UI/loader/Loader';
 import { STATUS_REQUEST } from '../../store/type';
+
 import './DetailedCard.scss';
 
 function DetailedCard(): JSX.Element {

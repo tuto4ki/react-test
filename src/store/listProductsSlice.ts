@@ -1,6 +1,7 @@
 import * as toolkitRaw from '@reduxjs/toolkit';
-const { createSlice, createAsyncThunk } = (toolkitRaw as any).default ?? toolkitRaw; // eslint-disable-line
-import type { PayloadAction, ActionReducerMapBuilder } from '@reduxjs/toolkit';
+type TypeToolkitRaw = typeof toolkitRaw & { default?: unknown };
+const { createSlice, createAsyncThunk } = ((toolkitRaw as TypeToolkitRaw).default ??
+  toolkitRaw) as typeof toolkitRaw;
 
 import { URL_API } from './settingsApi';
 import { STATUS_REQUEST } from './type';
@@ -32,18 +33,15 @@ const listProductsSlice = createSlice({
     error: '',
   },
   reducers: {},
-  extraReducers: (builder: ActionReducerMapBuilder<TStateListProductsSlice>) => {
+  extraReducers: (builder) => {
     builder.addCase(fetchProducts.pending, (state: TStateListProductsSlice) => {
       state.status = STATUS_REQUEST.loading;
       state.error = '';
     });
-    builder.addCase(
-      fetchProducts.fulfilled,
-      (state: TStateListProductsSlice, action: PayloadAction<IProductsListAPI>) => {
-        state.status = STATUS_REQUEST.resolved;
-        state.products = action.payload.products;
-      }
-    );
+    builder.addCase(fetchProducts.fulfilled, (state: TStateListProductsSlice, action) => {
+      state.status = STATUS_REQUEST.resolved;
+      state.products = action.payload.products;
+    });
   },
 });
 

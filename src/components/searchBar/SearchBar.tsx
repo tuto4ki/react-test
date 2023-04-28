@@ -1,10 +1,11 @@
 import React, { ChangeEvent, useState } from 'react';
 
 import { Input } from '../UI/input/Input';
-import './SearchBar.scss';
 import { useAppDispatch, useAppSelector } from '../../hook';
 import { changeSearchInput } from '../../store/searchInputSlice';
 import { fetchProducts } from '../../store/listProductsSlice';
+
+import './SearchBar.scss';
 
 function SearchBar(): JSX.Element {
   const valueSelector = useAppSelector((state) => state.searchInput);

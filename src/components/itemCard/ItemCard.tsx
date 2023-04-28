@@ -1,4 +1,5 @@
 import { IItemCard } from 'type';
+
 import './ItemCard.scss';
 import '../../assets/images/iconHeart.svg';
 

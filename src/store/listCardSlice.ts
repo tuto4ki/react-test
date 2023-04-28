@@ -1,5 +1,6 @@
 import * as toolkitRaw from '@reduxjs/toolkit';
-const { createSlice } = (toolkitRaw as any).default ?? toolkitRaw; // eslint-disable-line
+type TypeToolkitRaw = typeof toolkitRaw & { default?: unknown };
+const { createSlice } = ((toolkitRaw as TypeToolkitRaw).default ?? toolkitRaw) as typeof toolkitRaw;
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 import { IItemCard } from '../type';

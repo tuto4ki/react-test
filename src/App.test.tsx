@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
-
 import { BrowserRouter } from 'react-router-dom';
+
 import { renderWithProviders } from '../tests/utils/testUtils';
 import App from './App';
 

@@ -1,5 +1,7 @@
 import * as toolkitRaw from '@reduxjs/toolkit';
-const { configureStore, combineReducers } = (toolkitRaw as any).default ?? toolkitRaw; // eslint-disable-line
+type TypeToolkitRaw = typeof toolkitRaw & { default?: unknown };
+const { configureStore, combineReducers } = ((toolkitRaw as TypeToolkitRaw).default ??
+  toolkitRaw) as typeof toolkitRaw;
 import type { PreloadedState } from '@reduxjs/toolkit';
 
 import listCardReducer from './listCardSlice';

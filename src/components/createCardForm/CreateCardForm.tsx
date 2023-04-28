@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
+import { addListCard } from '../../store/listCardSlice';
+import { useAppDispatch } from '../../hook';
 import { TFormValues } from '../../type';
 import {
   Label,
@@ -13,12 +15,11 @@ import {
   InputCheckbox,
   InputRadio,
 } from '../UI';
+
 import typeRoomJSON from '../../assets/json/typeRoom.json';
 import errorMessageJSON from '../../assets/json/errorMessage.json';
 import titleFormJSON from '../../assets/json/formMessage.json';
 import './CreateCardForm.scss';
-import { addListCard } from '../../store/listCardSlice';
-import { useAppDispatch } from '../../hook';
 
 const TIMEOUT = 2000;
 
