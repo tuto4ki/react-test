@@ -1,0 +1,124 @@
+{"products": [
+  {
+      "id": 1,
+      "name": "Living room",
+      "date": "2023-01-01",
+      "typeRoom" : "Living room",
+      "description": "Architecture and interior design focused on the details, practicality and sustainability. Bespoke and unique luxury houses and villas built to perfection in UAE",
+      "price": 54900,
+      "likes": -1,
+      "view": 1300,
+      "rating": 4.69,
+      "thumbnail": "https://live.staticflickr.com/8592/15696147039_86af62c660_m.jpg",
+      "images": ["https://live.staticflickr.com/7523/15881550235_97b95d9ff0_m.jpg", "https://live.staticflickr.com/7512/15694041628_ea78492db5_m.jpg"]
+  }, {
+      "id": 2,
+      "name": "Living room",
+      "date": "2023-01-01",
+      "typeRoom": "Living room",
+      "description": "Architecture and interior design focused on the details, practicality and sustainability. Bespoke and unique luxury houses and villas built to perfection in UAE",
+      "price": 89900,
+      "likes": 15,
+      "view": 1000,
+      "rating": 4.44,
+      "thumbnail": "https://live.staticflickr.com/7550/15695466118_76716a5bc6_m.jpg",
+      "images": ["https://i.dummyjson.com/data/products/2/1.jpg", "https://i.dummyjson.com/data/products/2/2.jpg", "https://i.dummyjson.com/data/products/2/3.jpg", "https://i.dummyjson.com/data/products/2/thumbnail.jpg"]
+  }, {
+      "id": 3,
+      "name": "Living room",
+      "date": "2023-01-01",
+      "typeRoom": "Living room",
+      "description": "Architecture and interior design focused on the details, practicality and sustainability. Bespoke and unique luxury houses and villas built to perfection in UAE",
+      "price": 12400,
+      "likes": 120,
+      "view": 937,
+      "rating": 4.09,
+      "thumbnail": "https://live.staticflickr.com/7548/15696959449_2a3b360eb0_m.jpg",
+      "images": ["https://i.dummyjson.com/data/products/3/1.jpg", "https://m.media-amazon.com/images/I/71A0m3BjuKL._AC_SX679_.jpg"]
+  }, {
+      "id": 4,
+      "name": "Kitchen",
+      "date": "2023-01-01",
+      "typeRoom": "Kitchen",
+      "description": "Architecture and interior design focused on the details, practicality and sustainability. Bespoke and unique luxury houses and villas built to perfection in UAE",
+      "price": 28000,
+      "likes": 16,
+      "view": 344,
+      "rating": 4.3,
+      "thumbnail": "https://live.staticflickr.com/8572/15260724334_b227c8d498_m.jpg",
+      "images": ["https://i.dummyjson.com/data/products/4/1.jpg", "https://i.dummyjson.com/data/products/4/2.jpg", "https://i.dummyjson.com/data/products/4/3.jpg", "https://i.dummyjson.com/data/products/4/4.jpg", "https://i.dummyjson.com/data/products/4/thumbnail.jpg"]
+  }, {
+      "id": 5,
+      "name": "Living room",
+      "date": "2023-01-01",
+      "typeRoom": "Living room",
+      "description": "Architecture and interior design focused on the details, practicality and sustainability. Bespoke and unique luxury houses and villas built to perfection in UAE",
+      "price": 49900,
+      "likes": 310,
+      "view": 1294,
+      "rating": 4.09,
+      "thumbnail": "https://live.staticflickr.com/7504/15697231857_915a33ee17_m.jpg",
+      "images": ["https://i.dummyjson.com/data/products/5/1.jpg", "https://i.dummyjson.com/data/products/5/2.jpg", "https://i.dummyjson.com/data/products/5/3.jpg"]
+  }, {
+      "id": 6,
+      "name": "Bedroom",
+      "date": "2023-01-01",
+      "typeRoom": "Bedroom",
+      "description": "Architecture and interior design focused on the details, practicality and sustainability. Bespoke and unique luxury houses and villas built to perfection in UAE",
+      "price": 174900,
+      "likes": 10,
+      "view": 7123,
+      "rating": 4.57,
+      "thumbnail": "https://live.staticflickr.com/7571/15882161135_f17b01f182_m.jpg",
+      "images": ["https://i.dummyjson.com/data/products/6/1.png", "https://i.dummyjson.com/data/products/6/2.jpg", "https://i.dummyjson.com/data/products/6/3.png", "https://i.dummyjson.com/data/products/6/4.jpg"]
+  }, {
+      "id": 7,
+      "name": "Living room",
+      "date": "2023-01-01",
+      "typeRoom": "Living room",
+      "description": "Architecture and interior design focused on the details, practicality and sustainability. Bespoke and unique luxury houses and villas built to perfection in UAE",
+      "price": 1499000,
+      "likes": 10,
+      "view": 9548,
+      "rating": 4.25,
+      "thumbnail": "https://live.staticflickr.com/8602/15261907953_08227888f9_m.jpg",
+      "images": ["https://i.dummyjson.com/data/products/7/1.jpg", "https://i.dummyjson.com/data/products/7/2.jpg", "https://i.dummyjson.com/data/products/7/3.jpg", "https://i.dummyjson.com/data/products/7/thumbnail.jpg"]
+  }, {
+      "id": 8,
+      "name": "Living room",
+      "date": "2023-01-01",
+      "typeRoom": "Living room",
+      "description": "Architecture and interior design focused on the details, practicality and sustainability. Bespoke and unique luxury houses and villas built to perfection in UAE",
+      "price": 149900,
+      "likes": 10,
+      "view": 4500,
+      "rating": 4.43,
+      "thumbnail": "https://live.staticflickr.com/7523/15881550235_97b95d9ff0_m.jpg",
+      "images": ["https://i.dummyjson.com/data/products/8/1.jpg", "https://i.dummyjson.com/data/products/8/2.jpg", "https://i.dummyjson.com/data/products/8/3.jpg", "https://i.dummyjson.com/data/products/8/4.jpg", "https://i.dummyjson.com/data/products/8/thumbnail.jpg"]
+  }, {
+      "id": 9,
+      "name": "Bedroom",
+      "date": "2023-01-01",
+      "typeRoom": "Bedroom",
+      "description": "Architecture and interior design focused on the details, practicality and sustainability. Bespoke and unique luxury houses and villas built to perfection in UAE",
+      "price": 109900,
+      "likes": 10,
+      "view": 1605,
+      "rating": 4.54,
+      "thumbnail": "https://live.staticflickr.com/7512/15694041628_ea78492db5_m.jpg",
+      "images": ["https://i.dummyjson.com/data/products/9/1.jpg", "https://i.dummyjson.com/data/products/9/2.png", "https://i.dummyjson.com/data/products/9/3.png", "https://i.dummyjson.com/data/products/9/4.jpg", "https://i.dummyjson.com/data/products/9/thumbnail.jpg"]
+  }, {
+      "id": 10,
+      "name": "Living room",
+      "date": "2023-01-01",
+      "typeRoom": "Living room",
+      "description": "Architecture and interior design focused on the details, practicality and sustainability. Bespoke and unique luxury houses and villas built to perfection in UAE",
+      "price": 109900,
+      "likes": 10,
+      "view": 2000,
+      "rating": 4.43,
+      "thumbnail": "https://live.staticflickr.com/8620/15694038008_b19df04734_m.jpg",
+      "images": ["https://i.dummyjson.com/data/products/10/2.jpg", "https://i.dummyjson.com/data/products/10/3.jpg", "https://i.dummyjson.com/data/products/10/thumbnail.jpeg"]
+  }
+]
+}

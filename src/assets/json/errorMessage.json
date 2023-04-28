@@ -1,0 +1,38 @@
+{
+  "name": {
+    "custom": "Enter letters a-Z, starts with a capital letter, 2-25 characters long",
+    "minLengthMessage": "Length min 2",
+    "maxLengthMessage": "Length max 25",
+    "maxLength": 25,
+    "minLength": 2,
+    "patter": "^[A-Z]{1}[a-zA-Z]{1,24}$"
+  },
+  "price": {
+    "custom": "Enter only numbers, quantity from 1 to 10",
+    "minLength": 1,
+    "pattern": "^[1-9][0-9]{0,9}$"
+  },
+  "description": {
+    "custom": "Enter description",
+    "minLengthMessage": "Length min 5",
+    "maxLengthMessage": "Length max 100",
+    "minLength": 5,
+    "maxLength": 100
+  },
+  "date": {
+    "custom": "Choose date"
+  },
+  "typeRoom": {
+    "custom": "Choose type room",
+    "minLength": 3
+  },
+  "agree": {
+    "custom": "Add checkbox"
+  },
+  "likes": {
+    "custom": "Choose Show number of likes or not"
+  },
+  "file": {
+    "custom": "Add file"
+  }
+}
